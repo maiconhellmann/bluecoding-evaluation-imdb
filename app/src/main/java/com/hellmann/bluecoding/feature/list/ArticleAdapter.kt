@@ -3,6 +3,7 @@ package com.hellmann.bluecoding.feature.list
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hellmann.bluecoding.R
+import com.hellmann.bluecoding.data.BuildConfig
 import com.hellmann.bluecoding.domain.entity.Movie
 import com.hellmann.bluecoding.util.extensions.inflate
 import com.hellmann.bluecoding.util.extensions.load
