@@ -1,7 +1,7 @@
 package com.hellmann.bluecoding.data.di
 
 import com.hellmann.bluecoding.data.ArticleRepositoryImpl
-import com.hellmann.bluecoding.domain.repository.ArticleRepository
+import com.hellmann.bluecoding.domain.repository.MovieRepository
 import org.koin.dsl.module
 
 /*
@@ -12,7 +12,7 @@ import org.koin.dsl.module
  * (c) 2019 
  */
 val repositoryModule = module {
-    factory<ArticleRepository> {
+    factory<MovieRepository> {
         ArticleRepositoryImpl(
             cacheDataSource = get(), remoteDataSource = get())
     }

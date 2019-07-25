@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.hellmann.bluecoding.di.presentationModuleTest
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import com.hellmann.bluecoding.domain.entity.Article
-import com.hellmann.bluecoding.domain.usecase.GetArticlesUseCase
+import com.hellmann.bluecoding.domain.usecase.GetMoviesUseCase
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Rule
@@ -27,7 +27,7 @@ import org.mockito.Mockito.mock
 class ArticleViewModelTest : AutoCloseKoinTest() {
 
     val viewModel: ArticleViewModel by inject()
-    val useCase: GetArticlesUseCase by inject()
+    val useCase: GetMoviesUseCase by inject()
 
     //A JUnit Test Rule that swaps the background executor used by the Architecture Components with a different one which executes each task synchronously.
     //https://developer.android.com/reference/android/arch/core/executor/testing/InstantTaskExecutorRule
@@ -36,7 +36,7 @@ class ArticleViewModelTest : AutoCloseKoinTest() {
 
     @Before
     fun before() {
-        val mockUseCase = mock(GetArticlesUseCase::class.java)
+        val mockUseCase = mock(GetMoviesUseCase::class.java)
         val module = module { factory { mockUseCase } }
 
         //Needs to be mocked before injection(maybe try using mock by koin

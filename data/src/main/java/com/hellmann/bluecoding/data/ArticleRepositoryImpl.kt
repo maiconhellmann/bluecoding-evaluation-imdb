@@ -3,7 +3,7 @@ package com.hellmann.bluecoding.data
 import com.hellmann.bluecoding.data.local.source.ArticleCacheDataSource
 import com.hellmann.bluecoding.data.remote.source.RemoteDataSource
 import com.hellmann.bluecoding.domain.entity.Article
-import com.hellmann.bluecoding.domain.repository.ArticleRepository
+import com.hellmann.bluecoding.domain.repository.MovieRepository
 import io.reactivex.Single
 
 /*
@@ -15,8 +15,8 @@ import io.reactivex.Single
  */class ArticleRepositoryImpl(
     private val cacheDataSource: ArticleCacheDataSource,
     private val remoteDataSource: RemoteDataSource
-) : ArticleRepository {
-    override fun getArticles(forceUpdate: Boolean): Single<List<Article>> {
+) : MovieRepository {
+    override fun getMovies(forceUpdate: Boolean): Single<List<Article>> {
         return if (forceUpdate) {
             getArticlesRemote(forceUpdate)
         } else {

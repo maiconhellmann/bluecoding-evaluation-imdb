@@ -5,7 +5,7 @@ import com.hellmann.bluecoding.feature.viewmodel.BaseViewModel
 import com.hellmann.bluecoding.feature.viewmodel.StateMachineSingle
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import com.hellmann.bluecoding.domain.entity.Article
-import com.hellmann.bluecoding.domain.usecase.GetArticlesUseCase
+import com.hellmann.bluecoding.domain.usecase.GetMoviesUseCase
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.rxkotlin.subscribeBy
@@ -18,7 +18,7 @@ import io.reactivex.rxkotlin.subscribeBy
  * (c) 2019 
  */
 class ArticleViewModel(
-    private val useCase: GetArticlesUseCase, private val uiScheduler: Scheduler
+    private val useCase: GetMoviesUseCase, private val uiScheduler: Scheduler
 ) : BaseViewModel() {
 
     val state = MutableLiveData<ViewState<List<Article>>>().apply {
