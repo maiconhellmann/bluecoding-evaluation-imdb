@@ -3,7 +3,6 @@ package com.hellmann.bluecoding.data.local
 import androidx.test.platform.app.InstrumentationRegistry
 import com.hellmann.bluecoding.data.di.cacheDataModuleTest
 import com.hellmann.bluecoding.data.local.database.MovieDao
-import com.hellmann.bluecoding.data.local.model.ArticleCache
 import org.junit.Before
 import org.junit.Test
 import org.koin.android.ext.koin.androidContext
