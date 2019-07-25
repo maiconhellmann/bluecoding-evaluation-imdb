@@ -17,9 +17,9 @@ import org.koin.test.AutoCloseKoinTest
  * 
  * (c) 2019 
  */
-class ArticleDaoTest : AutoCloseKoinTest() {
+class MovieDaoTest : AutoCloseKoinTest() {
 
-    val articleDao = get<MovieDao>()
+    val movieDao = get<MovieDao>()
 
     @Before
     fun before() {
@@ -30,22 +30,24 @@ class ArticleDaoTest : AutoCloseKoinTest() {
     }
 
     @Test
-    fun articleDaoTesting() {
-        articleDao.apply {
+    fun movieDaoTesting() {
+        movieDao.apply {
 
             insertAll(listOf(
-                ArticleCache(0L, "title", "desc", "url", "urlToImage")
+//                MovieCache()
+            //TODO testing mock
             ))
 
             with(getAll().test()) {
                 assertValue {
                     it.isNotEmpty()
                 }
-                assertValue { it.first().title == "title" }
-                assertValue { it.first().description == "desc" }
-                assertValue { it.first().url == "url" }
-                assertValue { it.first().urlToImage == "urlToImage" }
-                assertValue { it.first().id != 0L } //will be auto generated
+                //TODO testing assertions
+//                assertValue { it.first().title == "title" }
+//                assertValue { it.first().description == "desc" }
+//                assertValue { it.first().url == "url" }
+//                assertValue { it.first().urlToImage == "urlToImage" }
+//                assertValue { it.first().id != 0L } //will be auto generated
             }
 
         }
