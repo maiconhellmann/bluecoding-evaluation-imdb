@@ -12,10 +12,9 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.filters.SmallTest
-import com.hellmann.bluecoding.domain.entity.Movie
-import com.hellmann.bluecoding.feature.list.ArticleListFragment
-import com.hellmann.bluecoding.feature.list.ArticleListFragmentDirections
-import com.hellmann.bluecoding.feature.list.ArticlesAdapter
+import com.hellmann.bluecoding.feature.list.MovieListFragment
+import com.hellmann.bluecoding.feature.list.MovieListFragmentDirections
+import com.hellmann.bluecoding.feature.list.MoviesAdapter
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import org.junit.Before
 import org.junit.Test
@@ -30,10 +29,10 @@ import org.robolectric.RobolectricTestRunner
  */
 @SmallTest
 @RunWith(RobolectricTestRunner::class)
-class ArticleListFragmentUnitTest {
+class MovieListFragmentUnitTest {
 
     private lateinit var mockNavController: NavController
-    private lateinit var articleList: FragmentScenario<ArticleListFragment>
+    private lateinit var movieList: FragmentScenario<MovieListFragment>
 
     @Before
     fun setUp() {
@@ -41,8 +40,8 @@ class ArticleListFragmentUnitTest {
     }
 
     @Test
-    fun `articleListFragment test`() {
-        articleList = launchFragmentInContainer<ArticleListFragment>().onFragment {
+    fun `movieListFragment test`() {
+        movieList = launchFragmentInContainer<MovieListFragment>().onFragment {
             Navigation.setViewNavController(it.requireView(), mockNavController)
 
             //Loading
@@ -66,16 +65,16 @@ class ArticleListFragmentUnitTest {
                 val index = 0
 
                 //Url of the current item
-                val url = (adapter as ArticlesAdapter).articles[index].posterPath
+                val url = (adapter as MoviesAdapter).movies[index].posterPath
                 //TODO test it
 
                 //Click current item
                 onView(withId(R.id.recyclerView)).perform(
-                    actionOnItemAtPosition<ArticlesAdapter.ViewHolder>(
+                    actionOnItemAtPosition<MoviesAdapter.ViewHolder>(
                         index, click()))
 
                 //navigation of the url of the item
-                val directions = ArticleListFragmentDirections.actionOpenWebview(url)
+                val directions = MovieListFragmentDirections.actionOpenWebview(url)
 
                 //verify destination
                 Mockito.verify(mockNavController).navigate(directions)

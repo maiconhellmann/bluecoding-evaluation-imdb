@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/articleListFragment">
+    app:startDestination="@id/movieListFragment">
 
     <fragment
-        android:id="@+id/articleListFragment"
-        android:name="com.hellmann.bluecoding.feature.list.ArticleListFragment"
-        android:label="@string/fragment_article_list_title" >
+        android:id="@+id/movieListFragment"
+        android:name="com.hellmann.bluecoding.feature.list.MovieListFragment"
+        android:label="@string/fragment_movie_list_title" >
         <action
             android:id="@+id/action_open_webview"
             app:destination="@id/webviewFragment" />

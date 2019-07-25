@@ -3,21 +3,20 @@ package com.hellmann.bluecoding.feature.list
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hellmann.bluecoding.R
-import com.hellmann.bluecoding.data.BuildConfig
 import com.hellmann.bluecoding.domain.entity.Movie
 import com.hellmann.bluecoding.util.extensions.inflate
 import com.hellmann.bluecoding.util.extensions.load
 import com.hellmann.bluecoding.util.extensions.visible
-import kotlinx.android.synthetic.main.fragment_article_item.view.image
-import kotlinx.android.synthetic.main.fragment_article_item.view.subtitle
-import kotlinx.android.synthetic.main.fragment_article_item.view.title
+import kotlinx.android.synthetic.main.fragment_movie_item.view.image
+import kotlinx.android.synthetic.main.fragment_movie_item.view.subtitle
+import kotlinx.android.synthetic.main.fragment_movie_item.view.title
 
-class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
-    var articles: List<Movie> = listOf()
+    var movies: List<Movie> = listOf()
 
     inner class ViewHolder(parent: ViewGroup) :
-        RecyclerView.ViewHolder(parent.inflate(R.layout.fragment_article_item)) {
+        RecyclerView.ViewHolder(parent.inflate(R.layout.fragment_movie_item)) {
 
         fun bind(movie: Movie) = with(itemView) {
             title.text = movie.title
@@ -27,7 +26,7 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
 //            if (movie.url != null) {
 //                movie.url?.let {
-//                    val directions = ArticleListFragmentDirections.actionOpenWebview(it)
+//                    val directions = MovieListFragmentDirections.actionOpenWebview(it)
 //                    setOnClickListener(Navigation.createNavigateOnClickListener(directions))
 //                }
 //            } else {
@@ -41,8 +40,8 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(parent)
 
-    override fun getItemCount(): Int = articles.size
+    override fun getItemCount(): Int = movies.size
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(articles[position])
+        holder.bind(movies[position])
     }
 }

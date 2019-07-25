@@ -10,25 +10,25 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hellmann.bluecoding.R
-import com.hellmann.bluecoding.databinding.FragmentArticleListBinding
+import com.hellmann.bluecoding.databinding.FragmentMovieListBinding
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import com.hellmann.bluecoding.util.extensions.toast
 import com.hellmann.bluecoding.util.extensions.visible
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ArticleListFragment : Fragment() {
+class MovieListFragment : Fragment() {
 
-    val viewModel: ArticleViewModel by viewModel()
-    private val androidJobAdapter: ArticlesAdapter by inject()
+    val viewModel: MovieViewModel by viewModel()
+    private val androidJobAdapter: MoviesAdapter by inject()
 
-    private lateinit var binding: FragmentArticleListBinding
+    private lateinit var binding: FragmentMovieListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_article_list, container, false)
+            inflater, R.layout.fragment_movie_list, container, false)
         return binding.root
     }
 
@@ -55,7 +55,7 @@ class ArticleListFragment : Fragment() {
         viewModel.state.observe(this, Observer { state ->
             when (state) {
                 is ViewState.Success -> {
-                    androidJobAdapter.articles = state.data
+                    androidJobAdapter.movies = state.data
                     setVisibilities(showList = true)
                 }
                 is ViewState.Loading -> {

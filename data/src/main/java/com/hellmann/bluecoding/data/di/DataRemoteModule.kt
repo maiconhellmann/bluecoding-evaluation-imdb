@@ -19,7 +19,7 @@ val remoteDataSourceModule = module {
             okHttpClient = get(), url = BuildConfig.BASE_URL)
     }
 
-    factory<RemoteDataSource> { RemoteDataSourceImpl(articleApi = get()) }
+    factory<RemoteDataSource> { RemoteDataSourceImpl(movieApi = get()) }
 }
 
 fun providesOkHttpClient(): OkHttpClient {

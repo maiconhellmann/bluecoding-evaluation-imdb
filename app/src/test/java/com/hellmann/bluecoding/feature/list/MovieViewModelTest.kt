@@ -22,9 +22,9 @@ import org.mockito.Mockito.mock
  * 
  * (c) 2019 
  */
-class ArticleViewModelTest : AutoCloseKoinTest() {
+class MovieViewModelTest : AutoCloseKoinTest() {
 
-    val viewModel: ArticleViewModel by inject()
+    val viewModel: MovieViewModel by inject()
     val useCase: GetMoviesUseCase by inject()
 
     //A JUnit Test Rule that swaps the background executor used by the Architecture Components with a different one which executes each task synchronously.

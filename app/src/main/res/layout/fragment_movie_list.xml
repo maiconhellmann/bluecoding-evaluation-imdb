@@ -8,14 +8,14 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.hellmann.bluecoding.feature.list.ArticleViewModel" />
+            type="com.hellmann.bluecoding.feature.list.MovieViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.list.ArticleListFragment">
+        tools:context=".feature.list.MovieListFragment">
 
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/fragment_article_item"/>
+                tools:listitem="@layout/fragment_movie_item"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

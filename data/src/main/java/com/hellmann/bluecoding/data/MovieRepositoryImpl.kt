@@ -24,13 +24,13 @@ class MovieRepositoryImpl(
     }
 
     private fun getMoviesRemote(forceUpdate: Boolean): Single<List<Movie>> {
-        return remoteDataSource.getMovies().flatMap { articleList ->
+        return remoteDataSource.getMovies().flatMap { list ->
             if (forceUpdate) {
-                cacheDataSource.updateData(articleList)
+                cacheDataSource.updateData(list)
             } else {
-                cacheDataSource.insertData(articleList)
+                cacheDataSource.insertData(list)
             }
-            Single.just(articleList)
+            Single.just(list)
         }
     }
 }
