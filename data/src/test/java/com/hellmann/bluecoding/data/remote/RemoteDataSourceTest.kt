@@ -34,7 +34,7 @@ class RemoteDataSourceTest {
                 ArticlesPayload(
                     "ok", 0, emptyList()))
         }
-        with(remoteDataSource.getArticles().test()) {
+        with(remoteDataSource.getMovies().test()) {
             assertValue {
                 it.isEmpty()
             }
@@ -50,7 +50,7 @@ class RemoteDataSourceTest {
                     "ok", 1, listOf(ArticlePayload("", ""))))
         }
 
-        with(remoteDataSource.getArticles().test()) {
+        with(remoteDataSource.getMovies().test()) {
             assertValue { it.isNotEmpty() }
             assertValueCount(1)
         }

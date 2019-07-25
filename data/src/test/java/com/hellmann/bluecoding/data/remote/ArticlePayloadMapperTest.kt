@@ -1,6 +1,6 @@
 package com.hellmann.bluecoding.data.remote
 
-import com.hellmann.bluecoding.data.remote.mapper.ArticlePayloadMapper
+import com.hellmann.bluecoding.data.remote.mapper.MoviePayloadMapper
 import com.hellmann.bluecoding.data.remote.model.ArticlePayload
 import com.hellmann.bluecoding.data.remote.model.ArticlesPayload
 import org.junit.Test
@@ -19,7 +19,7 @@ import org.junit.Test
                 ArticlePayload(
                     "title1", "description1", "url1", "urlToImage1", "publishedAt1")))
 
-        val mapped = ArticlePayloadMapper.map(payload)
+        val mapped = MoviePayloadMapper.map(payload)
 
         assert(mapped.isEmpty().not())
         assert(mapped.size == payload.articles.size)

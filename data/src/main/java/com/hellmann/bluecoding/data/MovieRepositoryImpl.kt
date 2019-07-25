@@ -12,7 +12,7 @@ import io.reactivex.Single
  * Created by maiconhellmann on 25/05/2019
  * 
  * (c) 2019 
- */class ArticleRepositoryImpl(
+ */class MovieRepositoryImpl(
     private val cacheDataSource: ArticleCacheDataSource,
     private val remoteDataSource: RemoteDataSource
 ) : MovieRepository {
@@ -30,7 +30,7 @@ import io.reactivex.Single
     }
 
     private fun getArticlesRemote(forceUpdate: Boolean): Single<List<Article>> {
-        return remoteDataSource.getArticles().flatMap { articleList ->
+        return remoteDataSource.getMovies().flatMap { articleList ->
             if (forceUpdate) {
                 cacheDataSource.updateData(articleList)
             } else {
