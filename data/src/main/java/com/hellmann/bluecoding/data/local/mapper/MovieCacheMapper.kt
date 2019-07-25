@@ -9,7 +9,7 @@ object MovieCacheMapper {
     private fun map(cacheData: MovieCache) = Movie(
         adult = cacheData.adult,
         backdropPath = cacheData.backdropPath,
-        belongsToCollection = cacheData.belongsToCollection,
+        belongsToCollection = Any(),//TODO todo do I need to map id?
         budget = cacheData.budget,
         genres = emptyList(), //TODO cacheData.genres mapper
         homepage = cacheData.homepage,
@@ -38,9 +38,9 @@ object MovieCacheMapper {
     private fun map(movie: Movie) = MovieCache(
         adult = movie.adult,
         backdropPath = movie.backdropPath,
-        belongsToCollection = movie.belongsToCollection,
+//        belongsToCollection = movie.belongsToCollection,
         budget = movie.budget,
-        genres = emptyList(), //TODO movie.genres mapper
+//        genres = emptyList(), //TODO movie.genres mapper
         homepage = movie.homepage,
         id = movie.id,
         imdbId = movie.imdbId,
@@ -49,12 +49,12 @@ object MovieCacheMapper {
         overview = movie.overview,
         popularity = movie.popularity,
         posterPath = movie.posterPath,
-        productionCompanies = emptyList(), //TODO list mapper
-        productionCountries = emptyList(), //TODO list mapper
+//        productionCompanies = emptyList(), //TODO list mapper
+//        productionCountries = emptyList(), //TODO list mapper
         releaseDate = movie.releaseDate,
         revenue = movie.revenue,
         runtime = movie.runtime,
-        spokenLanguages = emptyList(), //TODO movie.spokenLanguages
+//        spokenLanguages = emptyList(), //TODO movie.spokenLanguages
         status = movie.status,
         tagline = movie.tagline,
         title = movie.title,

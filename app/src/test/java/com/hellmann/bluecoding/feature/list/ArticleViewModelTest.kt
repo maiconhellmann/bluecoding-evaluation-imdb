@@ -2,10 +2,8 @@ package com.hellmann.bluecoding.feature.list
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.hellmann.bluecoding.di.presentationModuleTest
-import com.hellmann.bluecoding.feature.viewmodel.ViewState
-import com.hellmann.bluecoding.domain.entity.Article
 import com.hellmann.bluecoding.domain.usecase.GetMoviesUseCase
-import io.reactivex.Single
+import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -41,7 +39,8 @@ class ArticleViewModelTest : AutoCloseKoinTest() {
 
         //Needs to be mocked before injection(maybe try using mock by koin
         Mockito.`when`(mockUseCase.execute(true)).then {
-            Single.just(listOf(Article("Title")))
+            //            Single.just(listOf(Movie("Title")))
+            //TODO mockit
         }
 
         startKoin {
@@ -54,7 +53,7 @@ class ArticleViewModelTest : AutoCloseKoinTest() {
 
         assert(viewModel.state.value == ViewState.Loading)
 
-        viewModel.getJobs(true)
+        viewModel.getMovies(true)
 
         assert(viewModel.state.value is ViewState.Success)
 

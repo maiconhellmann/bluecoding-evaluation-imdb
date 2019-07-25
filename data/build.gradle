@@ -60,6 +60,8 @@ dependencies {
 
     implementation dependencies.koin
 
+    implementation dependencies.logginInterceptor
+
     testImplementation testDependencies.junit
     testImplementation testDependencies.mockito
     testImplementation testDependencies.robolectric

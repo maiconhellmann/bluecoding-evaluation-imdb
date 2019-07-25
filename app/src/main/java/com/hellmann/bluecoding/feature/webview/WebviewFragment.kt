@@ -10,13 +10,6 @@ import androidx.navigation.fragment.navArgs
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.FragmentWebViewBinding
 
-/*
- * This file is part of hellmann-architeture.
- * 
- * Created by maiconhellmann on 26/05/2019
- * 
- * (c) 2019 
- */
 class WebviewFragment : Fragment() {
 
     private lateinit var binding: FragmentWebViewBinding

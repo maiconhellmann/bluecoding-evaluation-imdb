@@ -12,11 +12,11 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.filters.SmallTest
+import com.hellmann.bluecoding.domain.entity.Movie
 import com.hellmann.bluecoding.feature.list.ArticleListFragment
 import com.hellmann.bluecoding.feature.list.ArticleListFragmentDirections
 import com.hellmann.bluecoding.feature.list.ArticlesAdapter
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
-import com.hellmann.bluecoding.domain.entity.Article
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -54,8 +54,10 @@ class ArticleListFragmentUnitTest {
             it.viewModel.state.postValue(
                 ViewState.Success(
                     listOf(
-                        Article(
-                            "", "", "http://www.google.com"))))
+//                        Movie(
+//                            "", "", "http://www.google.com")
+                    ))
+            )
 
             //Not loading anymore
             assert(it.view?.findViewById<View>(R.id.progressBar)?.isVisible == false)
@@ -64,7 +66,8 @@ class ArticleListFragmentUnitTest {
                 val index = 0
 
                 //Url of the current item
-                val url = (adapter as ArticlesAdapter).articles[index].url ?: ""
+                val url = (adapter as ArticlesAdapter).articles[index].posterPath
+                //TODO test it
 
                 //Click current item
                 onView(withId(R.id.recyclerView)).perform(

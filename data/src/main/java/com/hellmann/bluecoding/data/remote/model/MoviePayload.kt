@@ -9,15 +9,15 @@ import com.hellmann.bluecoding.data.local.model.SpokenLanguageCache
 data class MoviePayload(
     val adult: Boolean,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?= null,
     @SerializedName("belongs_to_collection")
-    val belongsToCollection: Any,
+    val belongsToCollection: Any?= null,
     val budget: Int,
     val genres: List<GenreCache>,
-    val homepage: String,
+    val homepage: String?= null,
     val id: Int,
     @SerializedName("imdb_id")
-    val imdbId: String,
+    val imdbId: String?= null,
     @SerializedName("original_language")
     val originalLanguage: String,
     @SerializedName("original_title")
@@ -36,8 +36,8 @@ data class MoviePayload(
     val runtime: Int,
     @SerializedName("spoken_languages")
     val spokenLanguages: List<SpokenLanguageCache>,
-    val status: String,
-    val tagline: String,
+    val status: String?= null,
+    val tagline: String?= null,
     val title: String,
     val video: Boolean,
     @SerializedName("vote_average")

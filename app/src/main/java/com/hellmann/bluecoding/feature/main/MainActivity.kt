@@ -12,13 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.ActivityMainBinding
 
-/*
- * This file is part of hellmann-architeture.
- * 
- * Created by maiconhellmann on 26/05/2019
- * 
- * (c) 2019 
- */class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding

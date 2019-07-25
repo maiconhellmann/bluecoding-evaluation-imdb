@@ -28,6 +28,7 @@ ext {
 
     //Retrofit
     retrofitVersion = '2.3.0'
+    logginInterceptorVersion = '3.12.1'
 
     //Gson
     gsonVersion = '2.8.5'
@@ -80,6 +81,7 @@ ext {
             retrofitRxAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
             retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             gson                 : "com.google.code.gson:gson:$gsonVersion",
+            logginInterceptor    : "com.squareup.okhttp3:logging-interceptor:$logginInterceptorVersion",
 
             room                 : "androidx.room:room-runtime:$roomVersion",
             roomRxJava           : "androidx.room:room-rxjava2:$roomVersion",

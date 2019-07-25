@@ -5,6 +5,7 @@ import com.hellmann.bluecoding.data.remote.api.ServerApi
 import com.hellmann.bluecoding.data.remote.source.RemoteDataSource
 import com.hellmann.bluecoding.data.remote.source.RemoteDataSourceImpl
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -22,7 +23,11 @@ val remoteDataSourceModule = module {
 }
 
 fun providesOkHttpClient(): OkHttpClient {
+    val interceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
     return OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS)
+        .addInterceptor(interceptor)
         .readTimeout(30, TimeUnit.SECONDS).writeTimeout(30, TimeUnit.SECONDS).build()
 }
 

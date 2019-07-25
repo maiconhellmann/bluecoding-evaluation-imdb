@@ -45,12 +45,12 @@ class ArticleListFragment : Fragment() {
 
     private fun setupSwipeRefresh() {
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.getJobs(true)
+            viewModel.getMovies(true)
         }
     }
 
     private fun setupViewModel() {
-        viewModel.getJobs()
+        viewModel.getMovies()
 
         viewModel.state.observe(this, Observer { state ->
             when (state) {
