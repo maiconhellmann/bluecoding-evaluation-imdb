@@ -1,27 +1,21 @@
 package com.hellmann.bluecoding.data.local.source
 
-import com.hellmann.bluecoding.data.local.database.ArticleDao
-import com.hellmann.bluecoding.data.local.mapper.ArticleCacheMapper
-import com.hellmann.bluecoding.domain.entity.Article
+import com.hellmann.bluecoding.data.local.database.MovieDao
+import com.hellmann.bluecoding.data.local.mapper.MovieCacheMapper
+import com.hellmann.bluecoding.domain.entity.Movie
 import io.reactivex.Single
 
-/*
- * This file is part of hellmann-architeture.
- * 
- * Created by maiconhellmann on 25/05/2019
- * 
- * (c) 2019 
- */class ArticleCacheDataSourceImpl(private val articleDao: ArticleDao) : ArticleCacheDataSource {
+class MovieCacheDataSourceImpl(private val MovieDao: MovieDao) : MovieCacheDataSource {
 
-    override fun getArticles(): Single<List<Article>> {
-        return articleDao.getAll().map { ArticleCacheMapper.map(it) }
+    override fun getMovies(): Single<List<Movie>> {
+        return MovieDao.getAll().map { MovieCacheMapper.map(it) }
     }
 
-    override fun insertData(list: List<Article>) {
-        articleDao.insertAll(ArticleCacheMapper.mapToCache(list))
+    override fun insertData(list: List<Movie>) {
+        MovieDao.insertAll(MovieCacheMapper.mapToCache(list))
     }
 
-    override fun updateData(list: List<Article>) {
-        articleDao.updateDate(ArticleCacheMapper.mapToCache(list))
+    override fun updateData(list: List<Movie>) {
+        MovieDao.updateDate(MovieCacheMapper.mapToCache(list))
     }
 }

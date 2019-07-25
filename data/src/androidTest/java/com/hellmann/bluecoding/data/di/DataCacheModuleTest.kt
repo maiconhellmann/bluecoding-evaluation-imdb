@@ -1,6 +1,6 @@
 package com.hellmann.bluecoding.data.di
 
-import com.hellmann.bluecoding.data.local.database.ArticleDataBase
+import com.hellmann.bluecoding.data.local.database.MovieDataBase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -13,5 +13,5 @@ import org.koin.dsl.module
  */
 
 val cacheDataModuleTest = module {
-    single { ArticleDataBase.createDatabaseInMemory(androidContext()) }
+    single { MovieDataBase.createDatabaseInMemory(androidContext()) }
 }

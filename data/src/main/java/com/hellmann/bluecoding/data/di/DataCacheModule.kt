@@ -1,7 +1,7 @@
 package com.hellmann.bluecoding.data.di
 
-import com.hellmann.bluecoding.data.local.database.ArticleDataBase
-import com.hellmann.bluecoding.data.local.source.ArticleCacheDataSource
+import com.hellmann.bluecoding.data.local.database.MovieDataBase
+import com.hellmann.bluecoding.data.local.source.MovieCacheDataSource
 import com.hellmann.bluecoding.data.local.source.ArticleCacheDataSourceImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
@@ -14,6 +14,6 @@ import org.koin.dsl.module
  * (c) 2019 
  */
 val cacheDataModule = module {
-    single { ArticleDataBase.createDatabase(androidContext()) }
-    factory<ArticleCacheDataSource> { ArticleCacheDataSourceImpl(articleDao = get()) }
+    single { MovieDataBase.createDatabase(androidContext()) }
+    factory<MovieCacheDataSource> { ArticleCacheDataSourceImpl(articleDao = get()) }
 }
