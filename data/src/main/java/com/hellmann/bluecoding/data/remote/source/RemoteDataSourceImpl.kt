@@ -6,7 +6,7 @@ import com.hellmann.bluecoding.domain.entity.Movie
 import io.reactivex.Single
 
 class RemoteDataSourceImpl(private val movieApi: ServerApi) : RemoteDataSource {
-    override fun getMovies(): Single<List<Movie>> {
-        return movieApi.fetchMovies().map { MoviePayloadMapper.map(it) }
+    override fun getMovies(year: String): Single<List<Movie>> {
+        return movieApi.fetchMoviesByYear(year).map { MoviePayloadMapper.map(it) }
     }
 }

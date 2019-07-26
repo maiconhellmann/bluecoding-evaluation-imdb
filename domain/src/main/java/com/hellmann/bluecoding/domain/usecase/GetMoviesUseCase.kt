@@ -4,6 +4,8 @@ import com.hellmann.bluecoding.domain.entity.Movie
 import com.hellmann.bluecoding.domain.repository.MovieRepository
 import io.reactivex.Scheduler
 import io.reactivex.Single
+import java.text.SimpleDateFormat
+import java.util.*
 
 class GetMoviesUseCase(
     private val repository: MovieRepository,
@@ -11,6 +13,7 @@ class GetMoviesUseCase(
 ) {
 
     fun execute(forceUpdate: Boolean): Single<List<Movie>> {
-        return repository.getMovies(forceUpdate).subscribeOn(scheduler)
+        val currentYear = SimpleDateFormat("yyyy", Locale.getDefault()).format(Date())
+        return repository.getMovies(forceUpdate, currentYear).subscribeOn(scheduler)
     }
 }

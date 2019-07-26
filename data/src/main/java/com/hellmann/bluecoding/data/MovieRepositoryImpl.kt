@@ -10,21 +10,21 @@ class MovieRepositoryImpl(
     private val cacheDataSource: MovieCacheDataSource,
     private val remoteDataSource: RemoteDataSource
 ) : MovieRepository {
-    override fun getMovies(forceUpdate: Boolean): Single<List<Movie>> {
+    override fun getMovies(forceUpdate: Boolean, currentYear: String): Single<List<Movie>> {
         return if (forceUpdate) {
-            getMoviesRemote(forceUpdate)
+            getMoviesRemote(forceUpdate, currentYear)
         } else {
             cacheDataSource.getMovies().flatMap { movieList ->
                 when {
-                    movieList.isEmpty() -> getMoviesRemote(false)
+                    movieList.isEmpty() -> getMoviesRemote(false, currentYear)
                     else -> Single.just(movieList)
                 }
             }
         }
     }
 
-    private fun getMoviesRemote(forceUpdate: Boolean): Single<List<Movie>> {
-        return remoteDataSource.getMovies().flatMap { list ->
+    private fun getMoviesRemote(forceUpdate: Boolean, currentYear: String): Single<List<Movie>> {
+        return remoteDataSource.getMovies(currentYear).flatMap { list ->
             if (forceUpdate) {
                 cacheDataSource.updateData(list)
             } else {

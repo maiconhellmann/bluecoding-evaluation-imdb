@@ -4,5 +4,5 @@ import com.hellmann.bluecoding.domain.entity.Movie
 import io.reactivex.Single
 
 interface RemoteDataSource {
-    fun getMovies(): Single<List<Movie>>
+    fun getMovies(year: String): Single<List<Movie>>
 }

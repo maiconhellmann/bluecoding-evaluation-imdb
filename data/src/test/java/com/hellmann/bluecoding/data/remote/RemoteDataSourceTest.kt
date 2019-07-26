@@ -26,7 +26,7 @@ class RemoteDataSourceTest {
     @Test
     fun `movie list is empty`() {
         //TODO testing mocking
-//        `when`(serverApi.fetchMovies()).then {
+//        `when`(serverApi.fetchMoviesByYear()).then {
 //            Single.just(
 //                MovieListPayload(
 //                    "ok", 0, emptyList())
@@ -43,7 +43,7 @@ class RemoteDataSourceTest {
     @Test
     fun `movie list not empty`() {
         //TODO testing and mocking
-//        `when`(serverApi.fetchMovies()).then {
+//        `when`(serverApi.fetchMoviesByYear()).then {
 //            Single.just(
 //                MoviesPayload(
 //                    "ok", 1, listOf(MoviePayload("", ""))))
