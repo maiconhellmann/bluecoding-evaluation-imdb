@@ -1,15 +1,16 @@
 package com.hellmann.bluecoding.feature.list
 
+import android.app.SearchManager
+import android.content.Context.SEARCH_SERVICE
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.FragmentMovieListBinding
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
@@ -18,8 +19,7 @@ import com.hellmann.bluecoding.util.extensions.visible
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MovieListFragment : Fragment() {
-
+class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
     val viewModel: MovieViewModel by viewModel()
     private val androidJobAdapter: MoviesAdapter by inject()
 
@@ -28,8 +28,12 @@ class MovieListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
+
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_movie_list, container, false)
+
+
         return binding.root
     }
 
@@ -90,5 +94,24 @@ class MovieListFragment : Fragment() {
         binding.recyclerView.visible(showList)
         binding.btnTryAgain.visible(showError)
         binding.swipeRefresh.isRefreshing = isRefreshing
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.movie_list_menu, menu)
+
+        val searchView = menu.findItem(R.id.action_search).actionView as SearchView
+
+        searchView.isSubmitButtonEnabled = true
+        searchView.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        //TODO call search use case
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return false
     }
 }
