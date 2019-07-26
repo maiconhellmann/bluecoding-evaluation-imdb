@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/movieListFragment">
+    app:startDestination="@id/movie_list_dest">
 
     <fragment
-        android:id="@+id/movieListFragment"
+        android:id="@+id/movie_list_dest"
         android:name="com.hellmann.bluecoding.feature.movie.list.MovieListFragment"
         android:label="@string/fragment_movie_list_title" >
         <action
