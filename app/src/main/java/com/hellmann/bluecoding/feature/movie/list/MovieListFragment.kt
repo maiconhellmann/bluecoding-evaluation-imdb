@@ -73,7 +73,7 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun showError(throwable: Throwable) {
         view?.context?.toast(throwable.toString())
-        Log.e("MainActivity", "Error", throwable)
+        Log.e(MovieListFragment::class.java.simpleName, "Error", throwable)
     }
 
     private fun setupRecyclerView() = with(binding.recyclerView) {

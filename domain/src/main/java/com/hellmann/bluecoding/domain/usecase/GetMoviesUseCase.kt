@@ -18,5 +18,6 @@ class GetMoviesUseCase(
 
     fun searchMovies(query: String) = repository.searchMovies(query).subscribeOn(scheduler)
 
-    fun getMovieDetails(id: Int, forceUpdate: Boolean= false) = repository.getMovieDetails(id, forceUpdate)
+    fun getMovieDetails(id: Int, forceUpdate: Boolean = false) =
+        repository.getMovieDetails(id, forceUpdate).subscribeOn(scheduler)
 }
