@@ -11,17 +11,8 @@
         android:label="@string/fragment_movie_list_title"
         tools:layout="@layout/fragment_movie_list">
         <action
-            android:id="@+id/action_open_webview"
-            app:destination="@id/webview_dest" />
-    </fragment>
-    <fragment
-        android:id="@+id/webview_dest"
-        android:name="com.hellmann.bluecoding.feature.webview.WebviewFragment"
-        android:label="@string/fragment_webview_title">
-        <argument
-            android:name="url"
-            android:defaultValue="https://www.google.com"
-            app:argType="string" />
+            android:id="@+id/action_open_movie_detail"
+            app:destination="@id/movie_detail_dest" />
     </fragment>
     <fragment
         android:id="@+id/favorite_movie_list_dest"
@@ -43,4 +34,13 @@
         android:name="com.hellmann.bluecoding.feature.movie.watchlist.WatchListFragment"
         android:label="@string/drawer_watchlist"
         tools:layout="@layout/fragment_watch_list" />
+    <fragment
+        android:id="@+id/movie_detail_dest"
+        android:name="com.hellmann.bluecoding.feature.movie.detail.MovieDetailFragment"
+        android:label="@string/fragment_movie_detail_title"
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

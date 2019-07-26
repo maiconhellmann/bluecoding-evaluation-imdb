@@ -1,6 +1,7 @@
 package com.hellmann.bluecoding.feature.movie.list
 
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.domain.entity.Movie
@@ -28,15 +29,8 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
                 getString(R.string.fragment_movie_rating_average, movie.voteAverage)
             imageViewPoster.load(movie.posterPath)
 
-            //TODO favourite status
-            //            if (movie.url != null) {
-            //                movie.url?.let {
-            //                    val directions = MovieListFragmentDirections.actionOpenWebview(it)
-            //                    setOnClickListener(Navigation.createNavigateOnClickListener(directions))
-            //                }
-            //            } else {
-            setOnClickListener(null)
-            //            }//TODO open details
+            val directions = MovieListFragmentDirections.actionOpenMovieDetail(movie.id)
+            setOnClickListener(Navigation.createNavigateOnClickListener(directions))
 
             itemView
         }

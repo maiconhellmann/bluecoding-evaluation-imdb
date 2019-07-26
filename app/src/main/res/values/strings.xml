@@ -2,7 +2,7 @@
     <string name="app_name">BlueCoding IMDB</string>
     <string name="try_again">Try again</string>
     <string name="fragment_movie_list_title">Movies</string>
-    <string name="fragment_webview_title">Webview</string>
+    <string name="fragment_movie_detail_title">Movie details</string>
     <string name="fragment_movie_rating_average">%1$.1f</string>
     <string name="search_hint">Search movies</string>
     <string name="sort">Sort by name</string>

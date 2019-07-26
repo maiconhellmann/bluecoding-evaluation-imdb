@@ -13,7 +13,7 @@ import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.filters.SmallTest
 import com.hellmann.bluecoding.feature.movie.list.MovieListFragment
-import com.hellmann.bluecoding.feature.movie.MovieListFragmentDirections
+import com.hellmann.bluecoding.feature.movie.list.MovieListFragmentDirections
 import com.hellmann.bluecoding.feature.movie.list.MoviesAdapter
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import org.junit.Before
@@ -65,7 +65,7 @@ class MovieListFragmentUnitTest {
                 val index = 0
 
                 //Url of the current item
-                val url = (adapter as MoviesAdapter).movies[index].posterPath
+                val id = (adapter as MoviesAdapter).movies[index].id
                 //TODO test it
 
                 //Click current item
@@ -74,7 +74,7 @@ class MovieListFragmentUnitTest {
                         index, click()))
 
                 //navigation of the url of the item
-                val directions = MovieListFragmentDirections.actionOpenWebview(url)
+                val directions = MovieListFragmentDirections.actionOpenMovieDetail(id)
 
                 //verify destination
                 Mockito.verify(mockNavController).navigate(directions)
