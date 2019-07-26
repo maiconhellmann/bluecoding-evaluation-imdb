@@ -2,7 +2,6 @@ package com.hellmann.bluecoding.feature.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -11,7 +10,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.ActivityMainBinding
 
@@ -25,22 +23,30 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
 
-        val host: NavHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-                ?: return
+        val navController = setupNavController() ?: return
 
-        // Set up Action Bar
-        val navController = host.navController
+        setupActionBar(navController)
+        setupDrawer(navController)
+        setupBottomNavMenu(navController)
+        setupNavigationMenu(navController)
+    }
+
+    private fun setupNavController() =
+        (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?)?.navController
+
+    private fun setupActionBar(navController: NavController) {
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+    }
+
+    private fun setupDrawer(navController: NavController) {
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.movie_list_dest, R.id.favorite_movie_list_dest),
-            null)
+            binding.drawerLayout)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        setupBottomNavMenu(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -48,7 +54,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavMenu(navController: NavController) {
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
-        bottomNav?.setupWithNavController(navController)
+        val bottomNav = binding.bottomNavView
+        bottomNav.setupWithNavController(navController)
+    }
+
+    private fun setupNavigationMenu(navController: NavController) {
+        val sideNavView = binding.navView
+        sideNavView.setupWithNavController(navController)
     }
 }
