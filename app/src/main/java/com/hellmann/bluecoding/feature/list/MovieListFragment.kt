@@ -107,11 +107,14 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        //TODO call search use case
+        viewModel.searchMovies(query)
         return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
+        if (newText.isNullOrEmpty()) viewModel.getMovies(false)
         return false
     }
+
+
 }

@@ -20,6 +20,7 @@ class MovieViewModel(
 
     fun getMovies(forceUpdate: Boolean = false) {
         disposables += useCase.getMovies(forceUpdate = forceUpdate)
+            .doOnSubscribe { state.postValue(ViewState.Loading) }
             .compose(StateMachineSingle())
             .observeOn(uiScheduler).subscribeBy(
                 onSuccess = {
@@ -30,5 +31,18 @@ class MovieViewModel(
 
     fun onTryAgainRequired() {
         getMovies(forceUpdate = true)
+    }
+
+    fun searchMovies(query: String?) {
+        if (query.isNullOrEmpty()) return getMovies(false)
+
+        disposables += useCase.searchMovies(query)
+            .doOnSubscribe { state.postValue(ViewState.Loading) }
+            .compose(StateMachineSingle())
+            .observeOn(uiScheduler).subscribeBy(
+                onSuccess = {
+                    state.postValue(it)
+                }
+            )
     }
 }

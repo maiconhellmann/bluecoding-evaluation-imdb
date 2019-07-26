@@ -14,6 +14,10 @@ import kotlinx.android.synthetic.main.fragment_movie_item.view.textViewTittle
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
     var movies: List<Movie> = listOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     inner class ViewHolder(parent: ViewGroup) :
         RecyclerView.ViewHolder(parent.inflate(R.layout.fragment_movie_item)) {
