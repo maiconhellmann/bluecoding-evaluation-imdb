@@ -1,69 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="3dp">
+    android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!--Center vertical-->
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/centerVertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".5"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image"
-            android:layout_width="100dp"
+            android:id="@+id/imageViewPoster"
+            android:layout_width="wrap_content"
             android:layout_height="130dp"
             android:scaleType="centerCrop"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher_background" />
 
-        <TextView
-            android:id="@+id/title"
-            style="@style/TextAppearance.AppCompat.Large"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="8dp"
-            android:lineSpacingMultiplier=".9"
-            app:layout_constraintLeft_toRightOf="@id/image"
-            app:layout_constraintRight_toLeftOf="@id/favorite"
-            app:layout_constraintBottom_toTopOf="@+id/centerVertical"
-            tools:text="Title goes here\nsecondeline" />
+    </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/rating"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_star_yellow_24dp"
-            android:drawablePadding="2dp"
-            android:gravity="center_vertical"
-            android:text="8"
-            app:layout_constraintTop_toBottomOf="@id/centerVertical"
-            app:layout_constraintLeft_toLeftOf="@id/title"
-            app:layout_constraintRight_toRightOf="@id/title"
-            tools:layout_editor_absoluteY="98dp" />
+    <ImageView
+        android:id="@+id/favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:elevation="10dp"
+        android:src="@drawable/selector_favorite_toggle"
+        app:layout_constraintTop_toTopOf="@id/cardViewImage"
+        app:layout_constraintRight_toRightOf="@id/cardViewImage"/>
 
-        <ImageView
-            android:id="@+id/favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/selector_favorite_toggle"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/textViewTittle"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLines="2"
+        android:lineSpacingMultiplier=".9"
+        app:layout_constraintLeft_toLeftOf="@id/cardViewImage"
+        app:layout_constraintRight_toRightOf="@id/cardViewImage"
+        app:layout_constraintTop_toBottomOf="@id/cardViewImage"
+        tools:text="Title goes here\nsecondeline" />
+
+    <TextView
+        android:id="@+id/textViewRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ic_star_yellow_24dp"
+        android:drawablePadding="2dp"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="@id/cardViewImage"
+        app:layout_constraintTop_toBottomOf="@id/textViewTittle"
+        tools:layout_editor_absoluteY="98dp"
+        tools:text="8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

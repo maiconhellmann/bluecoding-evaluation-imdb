@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.FragmentMovieListBinding
@@ -75,7 +76,7 @@ class MovieListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() = with(binding.recyclerView) {
-        layoutManager = LinearLayoutManager(context)
+        layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.movie_grid_columns))
         adapter = androidJobAdapter
     }
 

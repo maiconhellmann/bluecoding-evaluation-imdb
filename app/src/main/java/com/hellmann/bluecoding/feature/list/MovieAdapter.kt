@@ -7,9 +7,9 @@ import com.hellmann.bluecoding.domain.entity.Movie
 import com.hellmann.bluecoding.util.extensions.getString
 import com.hellmann.bluecoding.util.extensions.inflate
 import com.hellmann.bluecoding.util.extensions.load
-import kotlinx.android.synthetic.main.fragment_movie_item.view.image
-import kotlinx.android.synthetic.main.fragment_movie_item.view.rating
-import kotlinx.android.synthetic.main.fragment_movie_item.view.title
+import kotlinx.android.synthetic.main.fragment_movie_item.view.imageViewPoster
+import kotlinx.android.synthetic.main.fragment_movie_item.view.textViewRating
+import kotlinx.android.synthetic.main.fragment_movie_item.view.textViewTittle
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
@@ -19,19 +19,20 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(parent.inflate(R.layout.fragment_movie_item)) {
 
         fun bind(movie: Movie) = with(itemView) {
-            title.text = movie.title
-            rating.text = getString(R.string.fragment_movie_rating_average, movie.voteAverage)
-            image.load(movie.posterPath)
+            textViewTittle.text = movie.title
+            textViewRating.text =
+                getString(R.string.fragment_movie_rating_average, movie.voteAverage)
+            imageViewPoster.load(movie.posterPath)
 
             //TODO favourite status
-//            if (movie.url != null) {
-//                movie.url?.let {
-//                    val directions = MovieListFragmentDirections.actionOpenWebview(it)
-//                    setOnClickListener(Navigation.createNavigateOnClickListener(directions))
-//                }
-//            } else {
-                setOnClickListener(null)
-//            }//TODO open details
+            //            if (movie.url != null) {
+            //                movie.url?.let {
+            //                    val directions = MovieListFragmentDirections.actionOpenWebview(it)
+            //                    setOnClickListener(Navigation.createNavigateOnClickListener(directions))
+            //                }
+            //            } else {
+            setOnClickListener(null)
+            //            }//TODO open details
 
             itemView
         }
