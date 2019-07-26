@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.FragmentMovieListBinding
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
@@ -18,7 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
     val viewModel: MovieViewModel by viewModel()
-    private val androidJobAdapter: MoviesAdapter by inject()
+    private val movieAdapter: MoviesAdapter by inject()
 
     private lateinit var binding: FragmentMovieListBinding
 
@@ -29,7 +30,6 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_movie_list, container, false)
-
 
         return binding.root
     }
@@ -57,7 +57,7 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
         viewModel.state.observe(this, Observer { state ->
             when (state) {
                 is ViewState.Success -> {
-                    androidJobAdapter.movies = state.data
+                    movieAdapter.movies = state.data
                     setVisibilities(showList = true)
                 }
                 is ViewState.Loading -> {
@@ -78,7 +78,7 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun setupRecyclerView() = with(binding.recyclerView) {
         layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.movie_grid_columns))
-        adapter = androidJobAdapter
+        adapter = movieAdapter
     }
 
     private fun setVisibilities(

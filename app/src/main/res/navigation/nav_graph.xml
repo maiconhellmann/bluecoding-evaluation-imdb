@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/movie_list_dest">
 
     <fragment
         android:id="@+id/movie_list_dest"
         android:name="com.hellmann.bluecoding.feature.movie.list.MovieListFragment"
-        android:label="@string/fragment_movie_list_title" >
+        android:label="@string/fragment_movie_list_title"
+        tools:layout="@layout/fragment_movie_list">
         <action
             android:id="@+id/action_open_webview"
-            app:destination="@id/webviewFragment" />
+            app:destination="@id/webview_dest" />
     </fragment>
     <fragment
-        android:id="@+id/webviewFragment"
+        android:id="@+id/webview_dest"
         android:name="com.hellmann.bluecoding.feature.webview.WebviewFragment"
         android:label="@string/fragment_webview_title" >
         <argument
             android:name="url"
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue="https://www.google.com"/>
     </fragment>
+    <fragment
+        android:id="@+id/favorite_movie_list_dest"
+        android:name="com.hellmann.bluecoding.feature.movie.favorite.FavoriteMovieListFragment"
+        android:label="@string/favorite_title"
+        tools:layout="@layout/fragment_favorite_movie_list"/>
 </navigation>
