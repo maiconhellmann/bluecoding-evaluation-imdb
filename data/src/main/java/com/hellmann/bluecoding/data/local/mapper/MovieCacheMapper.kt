@@ -6,7 +6,7 @@ import com.hellmann.bluecoding.domain.entity.Movie
 object MovieCacheMapper {
     fun map(cacheData: List<MovieCache>) = cacheData.map { map(it) }
 
-    private fun map(cacheData: MovieCache) = Movie(
+    fun map(cacheData: MovieCache) = Movie(
         adult = cacheData.adult,
         backdropPath = cacheData.backdropPath,
         belongsToCollection = Any(),//TODO todo do I need to map id?

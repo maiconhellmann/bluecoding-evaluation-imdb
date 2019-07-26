@@ -42,4 +42,12 @@ class MovieRepositoryImpl(
 
         return remoteDataSource.searchMovies(query)
     }
+
+    override fun getMovieDetails(id: Int, forceUpdate: Boolean): Single<Movie> {
+        return if (forceUpdate) {
+            remoteDataSource.getMovieDetails(id)
+        } else {
+            cacheDataSource.getMovie(id)
+        }
+    }
 }

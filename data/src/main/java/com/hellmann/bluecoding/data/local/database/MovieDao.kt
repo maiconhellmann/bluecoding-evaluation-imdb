@@ -23,4 +23,7 @@ interface MovieDao {
         deleteAll()
         insertAll(list)
     }
+
+    @Query("SELECT * FROM MovieCache WHERE id = :movieId")
+    fun getById(movieId: Int): Single<MovieCache>
 }

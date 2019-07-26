@@ -18,4 +18,8 @@ class MovieCacheDataSourceImpl(private val movieDao: MovieDao) : MovieCacheDataS
     override fun updateData(list: List<Movie>) {
         movieDao.updateDate(MovieCacheMapper.mapToCache(list))
     }
+
+    override fun getMovie(id: Int): Single<Movie> {
+        return movieDao.getById(id).map { MovieCacheMapper.map(it) }
+    }
 }
