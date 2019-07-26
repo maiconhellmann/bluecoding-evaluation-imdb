@@ -14,6 +14,8 @@ class MovieViewModel(
     private val useCase: GetMoviesUseCase, private val uiScheduler: Scheduler
 ) : BaseViewModel() {
 
+    private var sortingType = SortingType.NONE
+
     val state = MutableLiveData<ViewState<List<Movie>>>().apply {
         value = ViewState.Loading
     }
@@ -24,6 +26,9 @@ class MovieViewModel(
             .compose(StateMachineSingle())
             .observeOn(uiScheduler).subscribeBy(
                 onSuccess = {
+                    //sort if necessary
+                    if(it is ViewState.Success) it.data.sort(sortingType)
+
                     state.postValue(it)
                 }
             )
@@ -41,8 +46,36 @@ class MovieViewModel(
             .compose(StateMachineSingle())
             .observeOn(uiScheduler).subscribeBy(
                 onSuccess = {
+                    //sort if necessary
+                    if(it is ViewState.Success) it.data.sort(sortingType)
+
                     state.postValue(it)
                 }
             )
+    }
+
+    fun toggleSortingMethod() {
+        sortingType = when(sortingType) {
+            SortingType.NONE -> SortingType.ASCENDING
+            SortingType.ASCENDING -> SortingType.DESCENDING
+            SortingType.DESCENDING -> SortingType.ASCENDING
+        }
+
+        val currentState = state.value
+        if (currentState is ViewState.Success) {
+            state.postValue(ViewState.Success(currentState.data.sort(sortingType)))
+        }
+    }
+}
+
+private enum class SortingType {
+    NONE, ASCENDING, DESCENDING
+}
+
+private fun List<Movie>.sort(sortingType: SortingType): List<Movie> {
+    return when(sortingType) {
+        SortingType.NONE -> this
+        SortingType.ASCENDING -> this.sortedBy { it.title }
+        SortingType.DESCENDING -> this.sortedByDescending { it.title  }
     }
 }

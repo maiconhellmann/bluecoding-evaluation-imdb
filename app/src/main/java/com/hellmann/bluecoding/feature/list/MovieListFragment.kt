@@ -106,11 +106,26 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
         searchView.setOnQueryTextListener(this)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_sort) {
+            viewModel.toggleSortingMethod()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    /**
+     * Triggered when the user taps o submit search from searchbar
+     */
     override fun onQueryTextSubmit(query: String?): Boolean {
         viewModel.searchMovies(query)
         return true
     }
 
+    /**
+     * Triggered whenever the text of the searchbar is changed
+     */
     override fun onQueryTextChange(newText: String?): Boolean {
         if (newText.isNullOrEmpty()) viewModel.getMovies(false)
         return false
