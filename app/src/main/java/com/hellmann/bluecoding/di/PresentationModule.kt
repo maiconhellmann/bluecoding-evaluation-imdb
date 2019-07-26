@@ -1,7 +1,7 @@
 package com.hellmann.bluecoding.di
 
 import com.hellmann.bluecoding.feature.movie.detail.MovieDetailViewModel
-import com.hellmann.bluecoding.feature.movie.list.MovieViewModel
+import com.hellmann.bluecoding.feature.movie.list.MovieListViewModel
 import com.hellmann.bluecoding.feature.movie.list.MoviesAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -12,7 +12,7 @@ val presentationModule = module {
     factory { MoviesAdapter() }
 
     viewModel {
-        MovieViewModel(useCase = get(), uiScheduler = AndroidSchedulers.mainThread())
+        MovieListViewModel(useCase = get(), uiScheduler = AndroidSchedulers.mainThread())
     }
     viewModel {
         MovieDetailViewModel(useCase = get(), uiScheduler = AndroidSchedulers.mainThread())

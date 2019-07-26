@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.FragmentMovieListBinding
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
@@ -18,7 +17,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
-    val viewModel: MovieViewModel by viewModel()
+    val viewModel: MovieListViewModel by viewModel()
     private val movieAdapter: MoviesAdapter by inject()
 
     private lateinit var binding: FragmentMovieListBinding

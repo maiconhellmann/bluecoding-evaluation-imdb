@@ -11,7 +11,7 @@ object MovieCacheMapper {
         backdropPath = cacheData.backdropPath,
         belongsToCollection = Any(),//TODO todo do I need to map id?
         budget = cacheData.budget,
-        genres = emptyList(), //TODO cacheData.genres mapper
+        genres = cacheData.genres ,
         homepage = cacheData.homepage,
         id = cacheData.id,
         imdbId = cacheData.imdbId,
@@ -40,7 +40,7 @@ object MovieCacheMapper {
         backdropPath = movie.backdropPath,
 //        belongsToCollection = movie.belongsToCollection,
         budget = movie.budget,
-//        genres = emptyList(), //TODO movie.genres mapper
+        genres = movie.genres,
         homepage = movie.homepage,
         id = movie.id,
         imdbId = movie.imdbId,

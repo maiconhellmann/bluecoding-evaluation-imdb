@@ -10,7 +10,7 @@ data class MovieCache(
     val backdropPath: String?= null,
 //    val belongsToCollection: Any,
     val budget: Int,
-//    val genres: List<GenreCache>,
+    val genres: String,
     val homepage: String? =null,
     @PrimaryKey(autoGenerate = false)
     val id: Int=0,
@@ -23,7 +23,7 @@ data class MovieCache(
 //    val productionCompanies: List<ProductionCompanyCache>,
 //    val productionCountries: List<ProductionCountryCache>,
     val releaseDate: String,
-    val revenue: Int,
+    val revenue: String?= null,
     val runtime: Int,
 //    val spokenLanguages: List<SpokenLanguageCache>,
     val status: String?= null,

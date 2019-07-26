@@ -3,7 +3,7 @@ package com.hellmann.bluecoding.feature.movie
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.hellmann.bluecoding.di.presentationModuleTest
 import com.hellmann.bluecoding.domain.usecase.GetMoviesUseCase
-import com.hellmann.bluecoding.feature.movie.list.MovieViewModel
+import com.hellmann.bluecoding.feature.movie.list.MovieListViewModel
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import org.junit.Before
 import org.junit.Rule
@@ -25,7 +25,7 @@ import org.mockito.Mockito.mock
  */
 class MovieViewModelTest : AutoCloseKoinTest() {
 
-    val viewModel: MovieViewModel by inject()
+    val viewModel: MovieListViewModel by inject()
     val useCase: GetMoviesUseCase by inject()
 
     //A JUnit Test Rule that swaps the background executor used by the Architecture Components with a different one which executes each task synchronously.

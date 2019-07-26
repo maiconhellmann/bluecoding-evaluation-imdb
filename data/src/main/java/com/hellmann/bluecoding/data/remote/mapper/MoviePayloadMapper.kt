@@ -1,7 +1,9 @@
 package com.hellmann.bluecoding.data.remote.mapper
 
+import com.hellmann.bluecoding.data.remote.model.GenrePayload
 import com.hellmann.bluecoding.data.remote.model.MovieListPayload
 import com.hellmann.bluecoding.data.remote.model.MoviePayload
+import com.hellmann.bluecoding.domain.entity.Genre
 import com.hellmann.bluecoding.domain.entity.Movie
 
 object MoviePayloadMapper {
@@ -13,7 +15,7 @@ object MoviePayloadMapper {
         backdropPath = payload.backdropPath,
         belongsToCollection = payload.belongsToCollection,
         budget = payload.budget,
-        genres = emptyList(), //TODO payload.genres mapper
+        genres = payload.genres?.joinToString { it.name } ?: "",
         homepage = payload.homepage,
         id = payload.id,
         imdbId = payload.imdbId,
@@ -34,4 +36,10 @@ object MoviePayloadMapper {
         video = payload.video,
         voteAverage = payload.voteAverage,
         voteCount = payload.voteCount)
+}
+
+object GenrePayloadMapper {
+    fun map (payload: GenrePayload): Genre {
+        return Genre(payload.id, payload.name)
+    }
 }

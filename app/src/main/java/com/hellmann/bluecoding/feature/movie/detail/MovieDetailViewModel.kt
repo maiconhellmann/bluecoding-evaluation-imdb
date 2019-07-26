@@ -24,11 +24,16 @@ import io.reactivex.rxkotlin.subscribeBy
         value = ViewState.Loading
     }
 
-    fun getMovieDetail(movieId: Int, forceUpdate: Boolean = false) {
+    fun getMovieDetail(movieId: Int, forceUpdate: Boolean = true) {
         disposables += useCase.getMovieDetails(movieId, forceUpdate)
             .doOnSubscribe { state.postValue(ViewState.Loading) }.compose(StateMachineSingle())
             .subscribeBy(onSuccess = {
                 state.postValue(it)
             })
+    }
+
+
+    fun onTryAgainRequired(movieId: Int) {
+        getMovieDetail(movieId, forceUpdate = true)
     }
 }
