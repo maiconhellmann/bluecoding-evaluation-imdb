@@ -1,4 +1,4 @@
-package com.hellmann.bluecoding.feature.list
+package com.hellmann.bluecoding.feature.movie.list
 
 import androidx.lifecycle.MutableLiveData
 import com.hellmann.bluecoding.domain.entity.Movie

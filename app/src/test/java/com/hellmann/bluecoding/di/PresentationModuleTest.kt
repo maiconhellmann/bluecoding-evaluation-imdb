@@ -1,7 +1,7 @@
 package com.hellmann.bluecoding.di
 
-import com.hellmann.bluecoding.feature.list.MovieViewModel
-import com.hellmann.bluecoding.feature.list.MoviesAdapter
+import com.hellmann.bluecoding.feature.movie.list.MovieViewModel
+import com.hellmann.bluecoding.feature.movie.list.MoviesAdapter
 import io.reactivex.schedulers.Schedulers
 import org.koin.dsl.module
 
@@ -17,6 +17,8 @@ val presentationModuleTest = module {
     factory { MoviesAdapter() }
 
     factory {
-        MovieViewModel(useCase = get(), uiScheduler = Schedulers.trampoline())
+        MovieViewModel(
+            useCase = get(),
+            uiScheduler = Schedulers.trampoline())
     }
 }

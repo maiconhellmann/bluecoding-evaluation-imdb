@@ -1,8 +1,9 @@
-package com.hellmann.bluecoding.feature.list
+package com.hellmann.bluecoding.feature.movie
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.hellmann.bluecoding.di.presentationModuleTest
 import com.hellmann.bluecoding.domain.usecase.GetMoviesUseCase
+import com.hellmann.bluecoding.feature.movie.list.MovieViewModel
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import org.junit.Before
 import org.junit.Rule

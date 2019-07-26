@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/movieListFragment"
-        android:name="com.hellmann.bluecoding.feature.list.MovieListFragment"
+        android:name="com.hellmann.bluecoding.feature.movie.list.MovieListFragment"
         android:label="@string/fragment_movie_list_title" >
         <action
             android:id="@+id/action_open_webview"

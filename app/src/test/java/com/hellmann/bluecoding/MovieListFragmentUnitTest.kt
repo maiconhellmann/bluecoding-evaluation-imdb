@@ -12,9 +12,9 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.filters.SmallTest
-import com.hellmann.bluecoding.feature.list.MovieListFragment
-import com.hellmann.bluecoding.feature.list.MovieListFragmentDirections
-import com.hellmann.bluecoding.feature.list.MoviesAdapter
+import com.hellmann.bluecoding.feature.movie.list.MovieListFragment
+import com.hellmann.bluecoding.feature.movie.MovieListFragmentDirections
+import com.hellmann.bluecoding.feature.movie.list.MoviesAdapter
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import org.junit.Before
 import org.junit.Test

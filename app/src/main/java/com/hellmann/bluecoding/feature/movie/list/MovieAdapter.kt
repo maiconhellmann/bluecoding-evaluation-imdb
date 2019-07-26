@@ -1,4 +1,4 @@
-package com.hellmann.bluecoding.feature.list
+package com.hellmann.bluecoding.feature.movie.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
