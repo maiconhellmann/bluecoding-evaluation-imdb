@@ -7,4 +7,7 @@
     <string name="search_hint">Search movies</string>
     <string name="sort">Sort by name</string>
     <string name="favorite_title">Favorite</string>
+    <string name="drawer_watchlist">Watch list</string>
+    <string name="drawer_movies_now">Movies in theater now</string>
+    <string name="drawer_best_movies">Best movies</string>
 </resources>

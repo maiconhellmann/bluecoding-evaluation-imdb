@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation android:id="@+id/nav_graph"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/movie_list_dest">
+    app:startDestination="@id/favorite_movie_list_dest">
 
     <fragment
         android:id="@+id/movie_list_dest"
@@ -17,15 +17,30 @@
     <fragment
         android:id="@+id/webview_dest"
         android:name="com.hellmann.bluecoding.feature.webview.WebviewFragment"
-        android:label="@string/fragment_webview_title" >
+        android:label="@string/fragment_webview_title">
         <argument
             android:name="url"
-            app:argType="string"
-            android:defaultValue="https://www.google.com"/>
+            android:defaultValue="https://www.google.com"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/favorite_movie_list_dest"
         android:name="com.hellmann.bluecoding.feature.movie.favorite.FavoriteMovieListFragment"
         android:label="@string/favorite_title"
-        tools:layout="@layout/fragment_favorite_movie_list"/>
+        tools:layout="@layout/fragment_favorite_movie_list" />
+    <fragment
+        android:id="@+id/theater_now_dest"
+        android:name="com.hellmann.bluecoding.feature.movie.theaternow.TheaterNowFragment"
+        android:label="@string/drawer_movies_now"
+        tools:layout="@layout/fragment_movies_now" />
+    <fragment
+        android:id="@+id/best_movies_dest"
+        android:name="com.hellmann.bluecoding.feature.movie.bestmovies.BestMoviesFragment"
+        android:label="@string/drawer_best_movies"
+        tools:layout="@layout/fragment_best_movies" />
+    <fragment
+        android:id="@+id/watch_list_dest"
+        android:name="com.hellmann.bluecoding.feature.movie.watchlist.WatchListFragment"
+        android:label="@string/drawer_watchlist"
+        tools:layout="@layout/fragment_watch_list" />
 </navigation>

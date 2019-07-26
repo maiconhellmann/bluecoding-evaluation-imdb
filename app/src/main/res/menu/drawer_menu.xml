@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@id/movie_list_dest"
-        android:icon="@drawable/ic_local_movies_white_24dp"
-        android:title="@string/fragment_movie_list_title" />
+        android:id="@id/watch_list_dest"
+        android:icon="@drawable/ic_playlist_play_white_24dp"
+        android:title="@string/drawer_watchlist" />
     <item
-        android:id="@id/favorite_movie_list_dest"
-        android:icon="@drawable/ic_favorite_red_24dp"
-        android:title="@string/favorite_title" />
+        android:id="@id/theater_now_dest"
+        android:icon="@drawable/ic_movie_filter_white_24dp"
+        android:title="@string/drawer_movies_now" />
+    <item
+        android:id="@id/best_movies_dest"
+        android:icon="@drawable/ic_movie_white_24dp"
+        android:title="@string/drawer_best_movies" />
 </menu>
