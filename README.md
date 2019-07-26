@@ -55,5 +55,5 @@ TODO
 
 
 ## Download
-The file can be downloaded clicking on the following link:
-[DOWNLOAD](http://www.google.com)
+The file can be downloaded clicking on the following link:  
+[Download 1.0.0 version](https://github.com/maiconhellmann/bluecoding-evaluation-imdb/tree/master/releases/1.0.0/app-debug.apk)
