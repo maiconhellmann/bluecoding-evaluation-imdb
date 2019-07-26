@@ -8,7 +8,7 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 
 /**
- * Example local unit test, which will execute on the development machine (host).
+ * Example local unit test, which will getMovies on the development machine (host).
  *
  * @see [Testing documentation](http://d.android.com/tools/testing)
  */

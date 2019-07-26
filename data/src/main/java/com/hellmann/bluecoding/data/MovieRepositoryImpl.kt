@@ -33,4 +33,13 @@ class MovieRepositoryImpl(
             Single.just(list)
         }
     }
+
+    /**
+     * Search for movies, always using remote data source
+     */
+    override fun searchMovies(query: String): Single<List<Movie>> {
+        if(query.isEmpty()) Single.just(emptyList<Movie>())
+
+        return remoteDataSource.searchMovies(query)
+    }
 }

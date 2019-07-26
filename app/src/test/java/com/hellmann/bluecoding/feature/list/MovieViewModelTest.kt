@@ -38,7 +38,7 @@ class MovieViewModelTest : AutoCloseKoinTest() {
         val module = module { factory { mockUseCase } }
 
         //Needs to be mocked before injection(maybe try using mock by koin
-        Mockito.`when`(mockUseCase.execute(true)).then {
+        Mockito.`when`(mockUseCase.getMovies(true)).then {
             //            Single.just(listOf(Movie("Title")))
             //TODO mockit
         }

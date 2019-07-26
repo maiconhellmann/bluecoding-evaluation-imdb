@@ -5,4 +5,5 @@ import io.reactivex.Single
 
 interface MovieRepository {
     fun getMovies(forceUpdate: Boolean, currentYear: String): Single<List<Movie>>
+    fun searchMovies(query: String): Single<List<Movie>>
 }

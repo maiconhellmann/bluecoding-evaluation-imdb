@@ -19,7 +19,7 @@ class MovieViewModel(
     }
 
     fun getMovies(forceUpdate: Boolean = false) {
-        disposables += useCase.execute(forceUpdate = forceUpdate)
+        disposables += useCase.getMovies(forceUpdate = forceUpdate)
             .compose(StateMachineSingle())
             .observeOn(uiScheduler).subscribeBy(
                 onSuccess = {
