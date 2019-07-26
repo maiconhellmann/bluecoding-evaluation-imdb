@@ -3,7 +3,7 @@
     <string name="try_again">Try again</string>
     <string name="fragment_movie_list_title">Movies</string>
     <string name="fragment_webview_title">Webview</string>
-    <string name="fragment_movie_rating_average">%1$.0f</string>
+    <string name="fragment_movie_rating_average">%1$.1f</string>
     <string name="search_hint">Search movies</string>
     <string name="sort">Sort by name</string>
     <string name="favorite_title">Favorite</string>

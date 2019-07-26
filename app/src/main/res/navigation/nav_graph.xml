@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/favorite_movie_list_dest">
+    app:startDestination="@id/movie_list_dest">
 
     <fragment
         android:id="@+id/movie_list_dest"

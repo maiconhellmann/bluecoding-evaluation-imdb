@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="BottomNavigation" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="itemIconTint">@drawable/selector_botton_nav</item>
+        <item name="itemTextColor">@drawable/selector_botton_nav</item>
+    </style>
 </resources>
