@@ -16,10 +16,10 @@ API key=5f18fddd90d0b4d77b1f975ab4a1355b
 More info can be found [HERE](https://developers.themoviedb.org/3/)
  
 ## Architeture
-MVVM(Model View ViewModel) - using Repository, UseCase and ViewModel
+MVVM(Model View ViewModel) - using Repository, UseCase and ViewModel  
 Modularization to make gradle build faster
 
-This project is based on another architecture  project I have developed:  [Github](https://github.com/maiconhellmann/hellmann-architecture)  
+This project is based on another architecture project I have developed:  [Github](https://github.com/maiconhellmann/hellmann-architecture)  
 This evaluation was also an opportunity to go further and improve my concepts using modularization, navigation, use case, repository, ViewModel and DataBinding.
 
 ### Modules
@@ -43,13 +43,15 @@ Kotlin
 TODO
 
 ## Improvements noticed and missing requirements
-* Handle movie details separately. There are more info in the Movie details than the data returned by the list of the movies AP. For now the app is fetching this info each time the detail screen is shown.
+* Handle movie details separately. There are more info in the Movie details than the data returned by the list of movies. For now the app is fetching this info each time the detail screen is shown.
 * Use Dagger instead of Koin. Koin is easier to use. Due to a short time to develop, it decided to use it
-* Implement login/signin onboarding to be able to fetch watch list, favorites, etc. This feature was not in the scope of the evaluation.
+* Implement login/signin onboarding to be able to fetch watch list, favorites, etc. The Login feature was not in the scope of the evaluation.
 * In a larger project I would use a module for each feature and a separated module for navigation
-* This project`s architecture, in my opinion, was to much for this project but my intention was to show my knowledge in the technologies used
+* This project`s architecture, in my opinion, was to much for this app but my intention was to show my knowledge regarding the stack of technologies used
 * Remove API KEY from the repository
-* Create a CI/CD script(in case of a real project)
+* Create a CI/CD script(real project)
+* Automated tests(real project)
+* Would be nice raising the code coverage of the tests(more than 70% at least)
 
 
 ## Download
