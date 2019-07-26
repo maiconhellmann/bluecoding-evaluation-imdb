@@ -4,11 +4,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.domain.entity.Movie
+import com.hellmann.bluecoding.util.extensions.getString
 import com.hellmann.bluecoding.util.extensions.inflate
 import com.hellmann.bluecoding.util.extensions.load
-import com.hellmann.bluecoding.util.extensions.visible
 import kotlinx.android.synthetic.main.fragment_movie_item.view.image
-import kotlinx.android.synthetic.main.fragment_movie_item.view.subtitle
+import kotlinx.android.synthetic.main.fragment_movie_item.view.rating
 import kotlinx.android.synthetic.main.fragment_movie_item.view.title
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
@@ -20,10 +20,10 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
         fun bind(movie: Movie) = with(itemView) {
             title.text = movie.title
-            subtitle.text = movie.homepage
-            subtitle.visible(movie.homepage?.isNotEmpty() ?: false)
+            rating.text = getString(R.string.fragment_movie_rating_average, movie.voteAverage)
             image.load(movie.posterPath)
 
+            //TODO favourite status
 //            if (movie.url != null) {
 //                movie.url?.let {
 //                    val directions = MovieListFragmentDirections.actionOpenWebview(it)

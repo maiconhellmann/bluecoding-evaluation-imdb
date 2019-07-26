@@ -12,44 +12,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!--Center vertical-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/centerVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".5"/>
+
         <ImageView
             android:id="@+id/image"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_width="100dp"
+            android:layout_height="130dp"
             android:scaleType="centerCrop"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/title"
-            style="@style/TextAppearance.AppCompat.Headline"
+            style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="8dp"
             android:lineSpacingMultiplier=".9"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image"
+            app:layout_constraintLeft_toRightOf="@id/image"
+            app:layout_constraintRight_toLeftOf="@id/favorite"
+            app:layout_constraintBottom_toTopOf="@+id/centerVertical"
             tools:text="Title goes here\nsecondeline" />
 
         <TextView
-            android:id="@+id/subtitle"
-            style="@style/TextAppearance.AppCompat.Caption"
+            android:id="@+id/rating"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            tools:text="Secondary text" />
+            android:drawableLeft="@drawable/ic_star_yellow_24dp"
+            android:drawablePadding="2dp"
+            android:gravity="center_vertical"
+            android:text="8"
+            app:layout_constraintTop_toBottomOf="@id/centerVertical"
+            app:layout_constraintLeft_toLeftOf="@id/title"
+            app:layout_constraintRight_toRightOf="@id/title"
+            tools:layout_editor_absoluteY="98dp" />
 
+        <ImageView
+            android:id="@+id/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/selector_favorite_toggle"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
