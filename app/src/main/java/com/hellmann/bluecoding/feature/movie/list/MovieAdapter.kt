@@ -5,6 +5,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.domain.entity.Movie
+import com.hellmann.bluecoding.util.extensions.afterLayout
 import com.hellmann.bluecoding.util.extensions.getString
 import com.hellmann.bluecoding.util.extensions.inflate
 import com.hellmann.bluecoding.util.extensions.load
@@ -27,6 +28,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
             textViewTittle.text = movie.title
             textViewRating.text =
                 getString(R.string.fragment_movie_rating_average, movie.voteAverage)
+
             imageViewPoster.load(movie.posterPath)
 
             val directions = MovieListFragmentDirections.actionOpenMovieDetail(movie.id)

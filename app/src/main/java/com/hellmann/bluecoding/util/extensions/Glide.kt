@@ -10,5 +10,6 @@ fun ImageView.load(url: String?, thumb: Boolean= true): ViewTarget<ImageView, Dr
     val baseUrl = if (!thumb) BuildConfig.IMAGES_URL else BuildConfig.IMAGES_URL + "/w500"
     return GlideApp.with(this)
         .load(baseUrl + url)
+        .dontTransform()
         .into(this)
 }

@@ -19,8 +19,7 @@
         <ImageView
             android:id="@+id/imageViewPoster"
             android:layout_width="wrap_content"
-            android:foreground="@drawable/favorite_bg"
-            android:layout_height="130dp"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,8 +34,9 @@
         android:layout_margin="6dp"
         android:elevation="10dp"
         android:src="@drawable/selector_favorite_toggle"
-        app:layout_constraintTop_toTopOf="@id/cardViewImage"
-        app:layout_constraintRight_toRightOf="@id/cardViewImage"/>
+        android:visibility="gone"
+        app:layout_constraintRight_toRightOf="@id/cardViewImage"
+        app:layout_constraintTop_toTopOf="@id/cardViewImage" />
 
     <TextView
         android:id="@+id/textViewTittle"
@@ -44,8 +44,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxLines="2"
         android:lineSpacingMultiplier=".9"
+        android:maxLines="2"
         app:layout_constraintLeft_toLeftOf="@id/cardViewImage"
         app:layout_constraintRight_toRightOf="@id/cardViewImage"
         app:layout_constraintTop_toBottomOf="@id/cardViewImage"
@@ -55,8 +55,8 @@
         android:id="@+id/textViewRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableRight="@drawable/ic_star_yellow_24dp"
         android:drawablePadding="2dp"
+        android:drawableRight="@drawable/ic_star_yellow_24dp"
         android:gravity="center_vertical"
         app:layout_constraintLeft_toLeftOf="@id/cardViewImage"
         app:layout_constraintTop_toBottomOf="@id/textViewTittle"
