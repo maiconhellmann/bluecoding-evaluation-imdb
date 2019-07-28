@@ -4,6 +4,7 @@
     <string name="fragment_movie_list_title">Movies</string>
     <string name="fragment_movie_detail_title">Movie details</string>
     <string name="fragment_movie_rating_average">%1$.1f</string>
+    <string name="fragment_movie_detail_rating">%1$.1f/10</string>
     <string name="default_int">%1$d</string>
     <string name="search_hint">Search movies</string>
     <string name="sort">Sort by name</string>
@@ -11,4 +12,8 @@
     <string name="drawer_watchlist">Watch list</string>
     <string name="drawer_movies_now">Movies in theater now</string>
     <string name="drawer_best_movies">Best movies</string>
+    <string name="add_to_watchlist">Add to watchlist</string>
+    <string name="rate_this">Rate this</string>
+    <string name="favorite_this">Favorite this</string>
+    <string name="not_implemented">Not implemented</string>
 </resources>

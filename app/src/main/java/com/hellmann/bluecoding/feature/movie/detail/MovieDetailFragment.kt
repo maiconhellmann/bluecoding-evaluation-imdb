@@ -16,7 +16,6 @@ import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import com.hellmann.bluecoding.util.extensions.load
 import com.hellmann.bluecoding.util.extensions.toast
 import com.hellmann.bluecoding.util.extensions.visible
-import kotlinx.android.synthetic.main.fragment_movie_list.progressBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /*
@@ -79,10 +78,21 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
         binding.imageViewPoster.load(movie.posterPath)
         binding.textViewTitle.text = movie.title
         binding.textViewYearRelease.text = movie.releaseDate
+        binding.imageViewPosterSmall.load(movie.posterPath)
+        binding.textViewSynopse.text = movie.overview
+        binding.textViewRating.text = getString(R.string.fragment_movie_detail_rating, movie.voteAverage)
 
         if (movie.genres.isNotEmpty()) {
             binding.textViewGenre.text = movie.genres
         }
+
+        binding.textViewFavorite.setOnClickListener(showNotImplementedError())
+        binding.textViewRateMovie.setOnClickListener(showNotImplementedError())
+        binding.addWatchlist.setOnClickListener(showNotImplementedError())
+    }
+
+    private fun showNotImplementedError()= View.OnClickListener {
+        view?.context?.toast(getString(R.string.not_implemented))
     }
 
     private fun showError(throwable: Throwable) {
