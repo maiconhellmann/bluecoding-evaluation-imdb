@@ -77,12 +77,15 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.state.observe(this, Observer { state->
             when (state) {
+                is ViewState.Loading -> {
+                    getNavController()?.navigate(R.id.user_guest_authentication_dest)
+                }
                 is ViewState.Failed -> {
                     this.toast("Error authenticating a guest user")
                     finish()
                 }
                 is ViewState.Success -> {
-                    getNavController()?.navigate(UserGuestAuthenticationFragmentDirections.actionOpenMovieList())
+                    getNavController()?.popBackStack()
                 }
             }
         })

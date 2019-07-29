@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/user_guest_authentication_dest">
+    app:startDestination="@id/movie_list_dest">
 
     <action
         android:id="@+id/action_open_movie_detail"
