@@ -23,7 +23,7 @@ import org.mockito.Mockito
 import org.robolectric.RobolectricTestRunner
 
 /**
- * Example local unit test, which will getMovies on the development machine (host).
+ * Example local unit test, which will getMoviesInTheater on the development machine (host).
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
