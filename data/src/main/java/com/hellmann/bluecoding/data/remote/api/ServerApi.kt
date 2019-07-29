@@ -18,4 +18,7 @@ interface ServerApi {
 
     @GET("${BuildConfig.API_VERSION}/movie/{movie_id}?api_key=${BuildConfig.API_KEY}")
     fun fetchMovieDetail(@Path("movie_id") movieId: Int): Single<MoviePayload>
+
+    @GET("${BuildConfig.API_VERSION}/movie/now_playing?api_key=${BuildConfig.API_KEY}")
+    fun fetchMovieInTheater(): Single<List<MoviePayload>>
 }

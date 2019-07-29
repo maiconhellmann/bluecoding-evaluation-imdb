@@ -20,4 +20,6 @@ class GetMoviesUseCase(
 
     fun getMovieDetails(id: Int, forceUpdate: Boolean = false) =
         repository.getMovieDetails(id, forceUpdate).subscribeOn(scheduler)
+
+    fun getMoviesInTheater() = repository.getMoviesInTheater().subscribeOn(scheduler)
 }

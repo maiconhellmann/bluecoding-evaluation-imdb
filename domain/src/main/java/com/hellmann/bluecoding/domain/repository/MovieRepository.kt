@@ -7,4 +7,5 @@ interface MovieRepository {
     fun getMovies(forceUpdate: Boolean = false, currentYear: String): Single<List<Movie>>
     fun searchMovies(query: String): Single<List<Movie>>
     fun getMovieDetails(id: Int, forceUpdate: Boolean): Single<Movie>
+    fun getMoviesInTheater(): Single<List<Movie>>
 }
