@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import com.hellmann.bluecoding.domain.entity.Authentication
+import com.hellmann.bluecoding.data.local.model.AuthenticationCache
 import io.reactivex.Single
 
 /*
@@ -17,16 +17,16 @@ import io.reactivex.Single
 @Dao
 interface AuthenticationDao {
     @Query("SELECT * FROM AuthenticationCache limit 1")
-    fun getGuestUserSession(): Single<Authentication>
+    fun getGuestUserSession(): Single<AuthenticationCache>
 
     @Query("DELETE FROM AuthenticationCache")
     fun deleteAll()
 
     @Insert
-    fun insert(authentication: Authentication)
+    fun insert(authentication: AuthenticationCache)
 
     @Transaction
-    fun updateGuestUserSession(authentication: Authentication): Authentication {
+    fun updateGuestUserSession(authentication: AuthenticationCache): AuthenticationCache {
         deleteAll()
         insert(authentication)
 

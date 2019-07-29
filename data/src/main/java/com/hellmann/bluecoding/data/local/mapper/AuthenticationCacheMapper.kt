@@ -17,4 +17,10 @@ object AuthenticationCacheMapper {
             expirestAt = cache.expirestAt,
             guestSessionId = cache.guestSessionId)
     }
+    fun map(model: Authentication): AuthenticationCache {
+        return AuthenticationCache(
+            success = model.success ?: false,
+            expirestAt = model.expirestAt,
+            guestSessionId = model.guestSessionId ?: "")
+    }
 }

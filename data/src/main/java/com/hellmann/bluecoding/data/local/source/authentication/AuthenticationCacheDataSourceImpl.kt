@@ -1,6 +1,7 @@
 package com.hellmann.bluecoding.data.local.source.authentication
 
 import com.hellmann.bluecoding.data.local.database.authentication.AuthenticationDao
+import com.hellmann.bluecoding.data.local.mapper.AuthenticationCacheMapper
 import com.hellmann.bluecoding.domain.entity.Authentication
 import io.reactivex.Single
 
@@ -15,10 +16,10 @@ class AuthenticationCacheDataSourceImpl(
     private val dao: AuthenticationDao
 ) : AuthenticationCacheDataSource {
     override fun getGuestUserSession(): Single<Authentication> {
-        return dao.getGuestUserSession()
+        return dao.getGuestUserSession().map { AuthenticationCacheMapper.map(it) }
     }
 
     override fun updateGuestUserSession(authentication: Authentication): Authentication {
-        return dao.updateGuestUserSession(authentication)
+        return AuthenticationCacheMapper.map(dao.updateGuestUserSession(AuthenticationCacheMapper.map(authentication)))
     }
 }

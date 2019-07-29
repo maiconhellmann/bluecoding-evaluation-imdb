@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.hellmann.bluecoding.data.local.model.AuthenticationCache
 
-@Database(version = 1, entities = [AuthenticationCache::class])
+@Database(version = 1, entities = [AuthenticationCache::class], exportSchema = false)
 abstract class AuthenticationDataBase : RoomDatabase() {
     abstract fun dao(): AuthenticationDao
 
