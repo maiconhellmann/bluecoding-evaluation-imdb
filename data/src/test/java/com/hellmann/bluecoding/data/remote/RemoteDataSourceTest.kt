@@ -1,10 +1,8 @@
 package com.hellmann.bluecoding.data.remote
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.hellmann.bluecoding.data.MoviePayloadMock
 import com.hellmann.bluecoding.data.remote.api.ServerApi
 import com.hellmann.bluecoding.data.remote.model.MovieListPayload
-import com.hellmann.bluecoding.data.remote.model.MoviePayload
 import com.hellmann.bluecoding.data.remote.source.RemoteDataSource
 import com.hellmann.bluecoding.data.remote.source.RemoteDataSourceImpl
 import io.reactivex.Single
@@ -23,16 +21,13 @@ class RemoteDataSourceTest: KoinComponent {
 
     private lateinit var remoteDataSource: RemoteDataSource
     private lateinit var serverApi: ServerApi
-    private lateinit var gson: Gson
-    private lateinit var defaultMoviePayload: MoviePayload
+    private val defaultMoviePayload= MoviePayloadMock.moviePlayloadMock.value
     private val defaultParameterYear = "2019"
 
     @Before
     fun prepare() {
         serverApi = mock(ServerApi::class.java)
         remoteDataSource = RemoteDataSourceImpl(serverApi)
-        gson = GsonBuilder().create()
-        defaultMoviePayload = gson.fromJson(DEFAULT_MOVIE_PAYLOAD, MoviePayload::class.java)
     }
 
     @Test
@@ -61,30 +56,5 @@ class RemoteDataSourceTest: KoinComponent {
             assertValue { it.isNotEmpty() }
             assertValueCount(1)
         }
-    }
-
-    companion object {
-        const val DEFAULT_MOVIE_PAYLOAD = """
-{
-    "vote_count": 7,
-    "id": 613473,
-    "video": false,
-    "vote_average": 5.5,
-    "title": "Burglary",
-    "popularity": 614.73,
-    "poster_path": "/xztkk3qwvjTfKArjTkhWUCuadFY.jpg",
-    "original_language": "en",
-    "original_title": "Burglary",
-    "genre_ids": [
-        27,
-        53,
-        9648
-    ],
-    "backdrop_path": null,
-    "adult": false,
-    "overview": "While playing videogames Mike spots a mysterious masked man outside his building.",
-    "release_date": "2019-07-19"
-}          
-        """
     }
 }

@@ -1,5 +1,7 @@
 package com.hellmann.bluecoding.data.remote
 
+import com.hellmann.bluecoding.data.MoviePayloadMock
+import com.hellmann.bluecoding.data.remote.mapper.MoviePayloadMapper
 import org.junit.Test
 
 /*
@@ -9,22 +11,16 @@ import org.junit.Test
  * 
  * (c) 2019 
  */class MoviePayloadMapperTest {
+    private val moviePayload = MoviePayloadMock.moviePlayloadMock.value
+
     @Test
     fun `MoviePayload to Movie`() {
-        //TODO tests
-//        val payload = MoviePayload(
-//            "status", 200, listOf(
-//                MoviePayload(
-//                    "title1", "description1", "url1", "urlToImage1", "publishedAt1")))
-//
-//        val mapped = MoviePayloadMapper.map(payload)
-//
-//        assert(mapped.isEmpty().not())
-//        assert(mapped.size == payload.movies.size)
-//        assert(mapped[0].title == payload.movies[0].title)
-//        assert(mapped[0].description == payload.movies[0].description)
-//        assert(mapped[0].publishedAt == payload.movies[0].publishedAt)
-//        assert(mapped[0].url == payload.movies[0].url)
-//        assert(mapped[0].urlToImage == payload.movies[0].urlToImage)
+        val mapped = MoviePayloadMapper.map(moviePayload)
+
+        //Assertions regarding the mapper
+        assert(mapped.id > 0)
+        assert(mapped.adult.not())
+        assert(mapped.releaseDate.isEmpty().not())
+        assert(mapped.backdropPath == null)
     }
 }
