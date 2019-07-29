@@ -1,7 +1,7 @@
 package com.hellmann.bluecoding.data
 
 import com.hellmann.bluecoding.data.local.source.MovieCacheDataSource
-import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSource
+import com.hellmann.bluecoding.data.remote.source.movie.MovieRemoteDataSource
 import com.hellmann.bluecoding.domain.entity.Movie
 import com.hellmann.bluecoding.domain.repository.MovieRepository
 import io.reactivex.Single

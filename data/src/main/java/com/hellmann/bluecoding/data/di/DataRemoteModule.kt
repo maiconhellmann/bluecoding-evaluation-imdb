@@ -1,9 +1,12 @@
 package com.hellmann.bluecoding.data.di
 
 import com.hellmann.bluecoding.data.BuildConfig
+import com.hellmann.bluecoding.data.remote.api.AuthenticationServerApi
 import com.hellmann.bluecoding.data.remote.api.MovieServerApi
-import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSource
-import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSourceImpl
+import com.hellmann.bluecoding.data.remote.source.authentication.AuthenticationRemoteDataSource
+import com.hellmann.bluecoding.data.remote.source.authentication.AuthenticationRemoteDataSourceImpl
+import com.hellmann.bluecoding.data.remote.source.movie.MovieRemoteDataSource
+import com.hellmann.bluecoding.data.remote.source.movie.MovieRemoteDataSourceImpl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -13,13 +16,27 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val remoteDataSourceModule = module {
+    //OkHttp
     factory { providesOkHttpClient() }
+
+    //MovieServerApi
     single {
         createWebService<MovieServerApi>(
             okHttpClient = get(), url = BuildConfig.BASE_URL)
     }
-
-    factory<MovieRemoteDataSource> { MovieRemoteDataSourceImpl(movieApi = get()) }
+    //AuthenticationServerApi
+    single {
+        createWebService<AuthenticationServerApi>(okHttpClient = get(), url = BuildConfig.BASE_URL)
+    }
+    //MovieRemoteDataSource
+    factory<MovieRemoteDataSource> {
+        MovieRemoteDataSourceImpl(
+            movieApi = get())
+    }
+    //AuthenticationRemoteDataSource
+    factory <AuthenticationRemoteDataSource>{
+        AuthenticationRemoteDataSourceImpl(api = get())
+    }
 }
 
 fun providesOkHttpClient(): OkHttpClient {

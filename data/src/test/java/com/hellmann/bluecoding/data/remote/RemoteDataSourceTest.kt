@@ -3,8 +3,8 @@ package com.hellmann.bluecoding.data.remote
 import com.hellmann.bluecoding.data.MoviePayloadMock
 import com.hellmann.bluecoding.data.remote.api.MovieServerApi
 import com.hellmann.bluecoding.data.remote.model.MovieListPayload
-import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSource
-import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSourceImpl
+import com.hellmann.bluecoding.data.remote.source.movie.MovieRemoteDataSource
+import com.hellmann.bluecoding.data.remote.source.movie.MovieRemoteDataSourceImpl
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -27,7 +27,8 @@ class RemoteDataSourceTest: KoinComponent {
     @Before
     fun prepare() {
         serverApi = mock(MovieServerApi::class.java)
-        remoteDataSource = MovieRemoteDataSourceImpl(serverApi)
+        remoteDataSource =
+            MovieRemoteDataSourceImpl(serverApi)
     }
 
     @Test

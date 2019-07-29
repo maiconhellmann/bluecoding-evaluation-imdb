@@ -1,4 +1,4 @@
-package com.hellmann.bluecoding.data.remote.source
+package com.hellmann.bluecoding.data.remote.source.movie
 
 import com.hellmann.bluecoding.domain.entity.Movie
 import io.reactivex.Single

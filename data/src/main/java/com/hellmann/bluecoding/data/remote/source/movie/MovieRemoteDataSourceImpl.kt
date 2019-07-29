@@ -1,11 +1,13 @@
-package com.hellmann.bluecoding.data.remote.source
+package com.hellmann.bluecoding.data.remote.source.movie
 
 import com.hellmann.bluecoding.data.remote.api.MovieServerApi
 import com.hellmann.bluecoding.data.remote.mapper.MoviePayloadMapper
+import com.hellmann.bluecoding.data.remote.source.movie.MovieRemoteDataSource
 import com.hellmann.bluecoding.domain.entity.Movie
 import io.reactivex.Single
 
-class MovieRemoteDataSourceImpl(private val movieApi: MovieServerApi) : MovieRemoteDataSource {
+class MovieRemoteDataSourceImpl(private val movieApi: MovieServerApi) :
+    MovieRemoteDataSource {
     override fun getMovies(year: String): Single<List<Movie>> {
         return movieApi.fetchMoviesByYear(year).map { MoviePayloadMapper.map(it) }
     }
