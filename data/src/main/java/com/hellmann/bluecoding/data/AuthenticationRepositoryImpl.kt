@@ -5,6 +5,7 @@ import com.hellmann.bluecoding.data.remote.source.authentication.AuthenticationR
 import com.hellmann.bluecoding.domain.entity.Authentication
 import com.hellmann.bluecoding.domain.repository.AuthenticationRepository
 import io.reactivex.Single
+import java.lang.IllegalArgumentException
 
 /*
  * This file is part of BlueCodingEvaluationIMDB.
@@ -23,6 +24,8 @@ class AuthenticationRepositoryImpl(
             .onErrorResumeNext {
                 //try to get from a remote service
                 remoteDataSource.createGuestUserSession().map {
+                    if (it.success != true || it.guestSessionId.isNullOrEmpty()) throw IllegalArgumentException("User returned is not authenticated")
+
                     //save locally
                     cacheDataSource.updateGuestUserSession(it)
                 }

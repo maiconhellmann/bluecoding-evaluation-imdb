@@ -9,12 +9,19 @@
         android:id="@+id/action_open_movie_detail"
         app:destination="@id/movie_detail_dest" />
 
+    <action
+        android:id="@+id/action_open_authentication"
+        app:destination="@id/user_guest_authentication_dest" />
+
+    <action
+        android:id="@+id/action_open_movie_list"
+        app:destination="@id/movie_list_dest" />
+
     <fragment
         android:id="@+id/movie_list_dest"
         android:name="com.hellmann.bluecoding.feature.movie.list.MovieListFragment"
         android:label="@string/fragment_movie_list_title"
-        tools:layout="@layout/fragment_movie_list">
-    </fragment>
+        tools:layout="@layout/fragment_movie_list" />
     <fragment
         android:id="@+id/favorite_movie_list_dest"
         android:name="com.hellmann.bluecoding.feature.movie.favorite.FavoriteMovieListFragment"
@@ -44,4 +51,10 @@
             android:name="movieId"
             app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/user_guest_authentication_dest"
+        android:name="com.hellmann.bluecoding.feature.authentication.UserGuestAuthenticationFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_user_guest_authentication" />
 </navigation>

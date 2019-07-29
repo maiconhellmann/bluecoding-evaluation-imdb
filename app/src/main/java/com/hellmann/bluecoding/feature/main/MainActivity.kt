@@ -3,6 +3,7 @@ package com.hellmann.bluecoding.feature.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -12,9 +13,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.ActivityMainBinding
+import com.hellmann.bluecoding.feature.authentication.UserGuestAuthenticationFragmentDirections
+import com.hellmann.bluecoding.feature.movie.list.MovieListFragmentDirections
 import com.hellmann.bluecoding.feature.movie.theaternow.notification.TheaterNowNotificationController
+import com.hellmann.bluecoding.feature.viewmodel.ViewState
+import com.hellmann.bluecoding.util.extensions.toast
 import org.koin.android.ext.android.inject
-import org.koin.core.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Handle the navigation, menu, drawer, toolbar and start the broadcast for AlarmManager
@@ -24,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private val controller: TheaterNowNotificationController by inject()
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
 
-        val navController = setupNavController() ?: return
+        val navController = getNavController() ?: return
 
         //Setup the navigation library: Drawer, bottonNav, toolbar and navigation
         setupActionBar(navController)
@@ -43,9 +49,33 @@ class MainActivity : AppCompatActivity() {
 
         //Start the alarm manager to schedule a push notification
         controller.startAlarmManager()
+
+        setupViewModel()
     }
 
-    private fun setupNavController() =
+    private fun setupViewModel() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
+        viewModel.getAuthentication()
+
+        viewModel.state.observe(this, Observer { state->
+            when (state) {
+                is ViewState.Loading -> {
+                    getNavController()?.navigate(R.id.user_guest_authentication_dest)
+                }
+                is ViewState.Failed -> {
+                    this.toast("Error authenticating a guest user")
+                    finish()
+                }
+                is ViewState.Success -> {
+                    getNavController()?.popBackStack()
+                }
+            }
+        })
+    }
+
+    private fun getNavController() =
         (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?)?.navController
 
     private fun setupActionBar(navController: NavController) {

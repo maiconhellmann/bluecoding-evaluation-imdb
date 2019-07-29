@@ -1,5 +1,6 @@
 package com.hellmann.bluecoding.di
 
+import com.hellmann.bluecoding.feature.main.MainViewModel
 import com.hellmann.bluecoding.feature.movie.detail.MovieDetailViewModel
 import com.hellmann.bluecoding.feature.movie.list.MovieListViewModel
 import com.hellmann.bluecoding.feature.movie.list.MoviesAdapter
@@ -14,6 +15,11 @@ val presentationModule = module {
     //RecyclerView adapters
     factory { MoviesAdapter() }
     factory { TheaterNowAdapter() }
+
+    //MainViewModel
+    viewModel {
+        MainViewModel(useCase = get(), uiScheduler = AndroidSchedulers.mainThread())
+    }
 
     //Movie List ViewModel
     viewModel {
