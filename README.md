@@ -59,7 +59,6 @@ TODO
 * In a larger project I would use a module for each feature and a separated module for navigation
 * This project`s architecture, in my opinion, was to much for this app but my intention was to show my knowledge regarding the stack of technologies used
 * Remove API KEY from the repository
-* Create a CI/CD script(real project)
 * Automated tests(real project)
 * Would be nice raising the code coverage of the tests(more than 70% at least)
 
