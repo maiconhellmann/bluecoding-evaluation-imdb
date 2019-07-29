@@ -1,4 +1,4 @@
-package com.hellmann.bluecoding.data.local.source
+package com.hellmann.bluecoding.data.local.source.movie
 
 import com.hellmann.bluecoding.domain.entity.Movie
 import io.reactivex.Single

@@ -1,6 +1,6 @@
 package com.hellmann.bluecoding.data
 
-import com.hellmann.bluecoding.data.local.source.MovieCacheDataSource
+import com.hellmann.bluecoding.data.local.source.movie.MovieCacheDataSource
 import com.hellmann.bluecoding.data.remote.source.movie.MovieRemoteDataSource
 import com.hellmann.bluecoding.domain.entity.Movie
 import com.hellmann.bluecoding.domain.repository.MovieRepository

@@ -1,4 +1,4 @@
-package com.hellmann.bluecoding.data.local.database
+package com.hellmann.bluecoding.data.local.database.movie
 
 import androidx.room.Dao
 import androidx.room.Insert

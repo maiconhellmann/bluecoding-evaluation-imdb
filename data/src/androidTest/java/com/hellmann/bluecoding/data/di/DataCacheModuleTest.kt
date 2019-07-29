@@ -1,6 +1,6 @@
 package com.hellmann.bluecoding.data.di
 
-import com.hellmann.bluecoding.data.local.database.MovieDataBase
+import com.hellmann.bluecoding.data.local.database.movie.MovieDataBase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

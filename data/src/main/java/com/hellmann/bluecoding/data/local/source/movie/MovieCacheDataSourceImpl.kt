@@ -1,11 +1,12 @@
-package com.hellmann.bluecoding.data.local.source
+package com.hellmann.bluecoding.data.local.source.movie
 
-import com.hellmann.bluecoding.data.local.database.MovieDao
+import com.hellmann.bluecoding.data.local.database.movie.MovieDao
 import com.hellmann.bluecoding.data.local.mapper.MovieCacheMapper
 import com.hellmann.bluecoding.domain.entity.Movie
 import io.reactivex.Single
 
-class MovieCacheDataSourceImpl(private val movieDao: MovieDao) : MovieCacheDataSource {
+class MovieCacheDataSourceImpl(private val movieDao: MovieDao) :
+    MovieCacheDataSource {
 
     override fun getMovies(): Single<List<Movie>> {
         return movieDao.getAll().map { MovieCacheMapper.map(it) }
