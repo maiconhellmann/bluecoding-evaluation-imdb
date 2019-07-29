@@ -16,4 +16,8 @@
     <string name="rate_this">Rate this</string>
     <string name="favorite_this">Favorite this</string>
     <string name="not_implemented">Not implemented</string>
+    <string name="notification_channel_name">Movies in Theater now</string>
+    <string name="notification_channel_description">Shows a notification everyday to keep you updated about the movies in theater.</string>
+    <string name="movies_theater_now_notification_title">Movies in theater right now</string>
+    <string name="movies_theater_now_notification_description">There are more movies in theater:\n%1$s, %2$s and %3$s</string>
 </resources>

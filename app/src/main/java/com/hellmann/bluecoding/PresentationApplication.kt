@@ -3,6 +3,7 @@ package com.hellmann.bluecoding
 import android.app.Application
 import com.hellmann.bluecoding.di.presentationModule
 import com.hellmann.bluecoding.data.di.dataModules
+import com.hellmann.bluecoding.di.schedulerModule
 import com.hellmann.bluecoding.domain.di.domainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -20,7 +21,7 @@ import org.koin.core.context.startKoin
             // declare used Android context
             androidContext(this@PresentationApplication)
             // declare modules
-            modules(dataModules + domainModule + presentationModule)
+            modules(dataModules + domainModule + presentationModule + schedulerModule)
         }
     }
 }

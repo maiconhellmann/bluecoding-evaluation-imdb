@@ -12,11 +12,15 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.ActivityMainBinding
+import com.hellmann.bluecoding.feature.movie.theaternow.notification.TheaterNowNotificationController
+import org.koin.android.ext.android.inject
+import org.koin.core.inject
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private val controller: TheaterNowNotificationController by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         setupDrawer(navController)
         setupBottomNavMenu(navController)
         setupNavigationMenu(navController)
+
+        //Start the alarm manager to schedule a push notification
+        controller.startAlarmManager()
     }
 
     private fun setupNavController() =
