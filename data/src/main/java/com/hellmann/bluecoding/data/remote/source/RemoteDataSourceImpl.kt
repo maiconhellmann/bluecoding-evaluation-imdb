@@ -17,4 +17,8 @@ class RemoteDataSourceImpl(private val movieApi: ServerApi) : RemoteDataSource {
     override fun getMovieDetails(id: Int): Single<Movie> {
         return movieApi.fetchMovieDetail(id).map { MoviePayloadMapper.map(it) }
     }
+
+    override fun getMoviesInTheater(): Single<List<Movie>> {
+        return movieApi.fetchMoviesInTheater().map { MoviePayloadMapper.map(it) }
+    }
 }

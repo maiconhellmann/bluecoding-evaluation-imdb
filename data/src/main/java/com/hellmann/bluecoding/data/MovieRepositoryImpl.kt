@@ -50,4 +50,9 @@ class MovieRepositoryImpl(
             cacheDataSource.getMovie(id)
         }
     }
+
+    override fun getMoviesInTheater(): Single<List<Movie>> {
+        //returns always from remote dataSource because it must be updated
+        return remoteDataSource.getMoviesInTheater()
+    }
 }
