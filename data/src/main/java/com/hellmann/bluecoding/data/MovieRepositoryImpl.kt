@@ -1,14 +1,14 @@
 package com.hellmann.bluecoding.data
 
 import com.hellmann.bluecoding.data.local.source.MovieCacheDataSource
-import com.hellmann.bluecoding.data.remote.source.RemoteDataSource
+import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSource
 import com.hellmann.bluecoding.domain.entity.Movie
 import com.hellmann.bluecoding.domain.repository.MovieRepository
 import io.reactivex.Single
 
 class MovieRepositoryImpl(
     private val cacheDataSource: MovieCacheDataSource,
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: MovieRemoteDataSource
 ) : MovieRepository {
     override fun getMovies(forceUpdate: Boolean, currentYear: String): Single<List<Movie>> {
         return if (forceUpdate) {

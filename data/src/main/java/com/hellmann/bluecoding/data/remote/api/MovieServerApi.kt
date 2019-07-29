@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface ServerApi {
+interface MovieServerApi {
 
     @GET("${BuildConfig.API_VERSION}/movie/popular?api_key=${BuildConfig.API_KEY}")
     fun fetchMoviesByYear(@Query("year") year: String): Single<MovieListPayload>

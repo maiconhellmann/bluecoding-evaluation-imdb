@@ -1,9 +1,9 @@
 package com.hellmann.bluecoding.data.di
 
 import com.hellmann.bluecoding.data.BuildConfig
-import com.hellmann.bluecoding.data.remote.api.ServerApi
-import com.hellmann.bluecoding.data.remote.source.RemoteDataSource
-import com.hellmann.bluecoding.data.remote.source.RemoteDataSourceImpl
+import com.hellmann.bluecoding.data.remote.api.MovieServerApi
+import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSource
+import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSourceImpl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -15,11 +15,11 @@ import java.util.concurrent.TimeUnit
 val remoteDataSourceModule = module {
     factory { providesOkHttpClient() }
     single {
-        createWebService<ServerApi>(
+        createWebService<MovieServerApi>(
             okHttpClient = get(), url = BuildConfig.BASE_URL)
     }
 
-    factory<RemoteDataSource> { RemoteDataSourceImpl(movieApi = get()) }
+    factory<MovieRemoteDataSource> { MovieRemoteDataSourceImpl(movieApi = get()) }
 }
 
 fun providesOkHttpClient(): OkHttpClient {

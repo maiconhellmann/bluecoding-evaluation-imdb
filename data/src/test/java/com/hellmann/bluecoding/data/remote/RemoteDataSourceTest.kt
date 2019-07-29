@@ -1,10 +1,10 @@
 package com.hellmann.bluecoding.data.remote
 
 import com.hellmann.bluecoding.data.MoviePayloadMock
-import com.hellmann.bluecoding.data.remote.api.ServerApi
+import com.hellmann.bluecoding.data.remote.api.MovieServerApi
 import com.hellmann.bluecoding.data.remote.model.MovieListPayload
-import com.hellmann.bluecoding.data.remote.source.RemoteDataSource
-import com.hellmann.bluecoding.data.remote.source.RemoteDataSourceImpl
+import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSource
+import com.hellmann.bluecoding.data.remote.source.MovieRemoteDataSourceImpl
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -19,15 +19,15 @@ import org.mockito.Mockito.mock
  */
 class RemoteDataSourceTest: KoinComponent {
 
-    private lateinit var remoteDataSource: RemoteDataSource
-    private lateinit var serverApi: ServerApi
+    private lateinit var remoteDataSource: MovieRemoteDataSource
+    private lateinit var serverApi: MovieServerApi
     private val defaultMoviePayload= MoviePayloadMock.moviePlayloadMock.value
     private val defaultParameterYear = "2019"
 
     @Before
     fun prepare() {
-        serverApi = mock(ServerApi::class.java)
-        remoteDataSource = RemoteDataSourceImpl(serverApi)
+        serverApi = mock(MovieServerApi::class.java)
+        remoteDataSource = MovieRemoteDataSourceImpl(serverApi)
     }
 
     @Test
