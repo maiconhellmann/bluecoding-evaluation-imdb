@@ -20,10 +20,16 @@ import io.reactivex.rxkotlin.subscribeBy
     private val useCase: GetMoviesUseCase, private val uiScheduler: Scheduler
 ) : BaseViewModel() {
 
+    /**
+     * View state to be observed by the view
+     */
     val state = MutableLiveData<ViewState<Movie>>().apply {
         value = ViewState.Loading
     }
 
+    /**
+     * Fetch user detail from repository
+     */
     fun getMovieDetail(movieId: Int, forceUpdate: Boolean = true) {
         disposables += useCase.getMovieDetails(movieId, forceUpdate)
             .doOnSubscribe { state.postValue(ViewState.Loading) }.compose(StateMachineSingle())
@@ -32,7 +38,9 @@ import io.reactivex.rxkotlin.subscribeBy
             })
     }
 
-
+    /**
+     * Event triggered by the button "Try again"
+     */
     fun onTryAgainRequired(movieId: Int) {
         getMovieDetail(movieId, forceUpdate = true)
     }

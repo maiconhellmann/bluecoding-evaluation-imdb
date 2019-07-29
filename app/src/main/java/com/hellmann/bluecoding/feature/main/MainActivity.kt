@@ -16,6 +16,9 @@ import com.hellmann.bluecoding.feature.movie.theaternow.notification.TheaterNowN
 import org.koin.android.ext.android.inject
 import org.koin.core.inject
 
+/**
+ * Handle the navigation, menu, drawer, toolbar and start the broadcast for AlarmManager
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         val navController = setupNavController() ?: return
 
+        //Setup the navigation library: Drawer, bottonNav, toolbar and navigation
         setupActionBar(navController)
         setupDrawer(navController)
         setupBottomNavMenu(navController)

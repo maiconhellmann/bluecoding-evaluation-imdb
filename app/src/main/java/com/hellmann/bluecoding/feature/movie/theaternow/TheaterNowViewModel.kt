@@ -19,10 +19,16 @@ import io.reactivex.rxkotlin.subscribeBy
  */class TheaterNowViewModel(
     private val useCase: GetMoviesUseCase, private val uiScheduler: Scheduler
 ) : BaseViewModel() {
+    /**
+     * View state to be observed by the view
+     */
     val state = MutableLiveData<ViewState<List<Movie>>>().apply {
         value = ViewState.Loading
     }
 
+    /**
+     * Fetch movies in theater from the repository and update the view state
+     */
     fun getMoviesInTheater() {
         disposables += useCase.getMoviesInTheater()
             .doOnSubscribe { state.postValue(ViewState.Loading) }.compose(StateMachineSingle())
@@ -31,6 +37,9 @@ import io.reactivex.rxkotlin.subscribeBy
             })
     }
 
+    /**
+     * Event triggered by the button "Try again"
+     */
     fun onTryAgainRequired() {
         getMoviesInTheater()
     }

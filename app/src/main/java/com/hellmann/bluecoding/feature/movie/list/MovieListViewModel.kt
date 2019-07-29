@@ -14,12 +14,22 @@ class MovieListViewModel(
     private val useCase: GetMoviesUseCase, private val uiScheduler: Scheduler
 ) : BaseViewModel() {
 
+    /**
+     * State for the sorting type. It starts with NONE. When the user taps on sort button, it
+     * switches between the values from the enum SortingType [MovieListViewModel.toggleSortingMethod]
+     */
     private var sortingType = SortingType.NONE
 
+    /**
+     * State of the data used in the screen
+     */
     val state = MutableLiveData<ViewState<List<Movie>>>().apply {
         value = ViewState.Loading
     }
 
+    /**
+     * Fetch a list of movies from the repository and update the view state
+     */
     fun getMovies(forceUpdate: Boolean = false) {
         disposables += useCase.getMovies(forceUpdate = forceUpdate)
             .doOnSubscribe { state.postValue(ViewState.Loading) }
@@ -34,10 +44,17 @@ class MovieListViewModel(
             )
     }
 
+    /**
+     * Event triggered when user taps on "Try again" button.
+     */
     fun onTryAgainRequired() {
         getMovies(forceUpdate = true)
     }
 
+    /**
+     * Triggered when a user uses the search bar at the top of the view.
+     * If the query is empty, it executes the default api call
+     */
     fun searchMovies(query: String?) {
         if (query.isNullOrEmpty()) return getMovies(false)
 
@@ -54,6 +71,15 @@ class MovieListViewModel(
             )
     }
 
+    /**
+     * Toggle the sorting method:
+     *
+     * From SortingType.NONE to SortingType.ASCENDING
+     *
+     * From SortingType.ASCENDING to SortingType.DESCENDING
+     *
+     * From SortingType.DESCENDING to SortingType.ASCENDING
+     */
     fun toggleSortingMethod() {
         sortingType = when(sortingType) {
             SortingType.NONE -> SortingType.ASCENDING
@@ -72,6 +98,9 @@ private enum class SortingType {
     NONE, ASCENDING, DESCENDING
 }
 
+/**
+ * Sort the list of movies based on sorting type. See [MovieListViewModel.sortingType]
+ */
 private fun List<Movie>.sort(sortingType: SortingType): List<Movie> {
     return when(sortingType) {
         SortingType.NONE -> this

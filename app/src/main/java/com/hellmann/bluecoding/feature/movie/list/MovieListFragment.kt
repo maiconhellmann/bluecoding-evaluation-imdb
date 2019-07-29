@@ -44,12 +44,18 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
         setupSwipeRefresh()
     }
 
+    /**
+     * Setup the Swipe refresh mechanism triggering the viewModel. See [MovieListViewModel.getMovies]
+     */
     private fun setupSwipeRefresh() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.getMovies(true)
         }
     }
 
+    /**
+     * Trigger the query of movies and observe the viewModel.
+     */
     private fun setupViewModel() {
         viewModel.getMovies()
 
@@ -70,16 +76,25 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
         })
     }
 
+    /**
+     * Show a really basic error message to the user
+     */
     private fun showError(throwable: Throwable) {
         view?.context?.toast(throwable.toString())
         Log.e(MovieListFragment::class.java.simpleName, "Error", throwable)
     }
 
+    /**
+     * Setup the recycleView layout manager and set the adapter.
+     */
     private fun setupRecyclerView() = with(binding.recyclerView) {
         layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.movie_grid_columns))
         adapter = movieAdapter
     }
 
+    /**
+     * Centralized method to set the component visibilities.
+     */
     private fun setVisibilities(
         showProgressBar: Boolean = false,
         showList: Boolean = false,

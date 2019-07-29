@@ -17,6 +17,7 @@ import org.koin.core.context.startKoin
  */class PresentationApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        //Starts Koin dependency injection
         startKoin {
             // declare used Android context
             androidContext(this@PresentationApplication)

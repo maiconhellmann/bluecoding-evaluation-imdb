@@ -56,6 +56,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
         binding.btnTryAgain.setOnClickListener { viewModel.onTryAgainRequired(movieId) }
     }
 
+    /**
+     * Triggers the [MovieDetailViewModel.getMovieDetail] and observe the state of the [MovieDetailViewModel.state]
+     */
     private fun setupViewModel() {
         viewModel.getMovieDetail(movieId)
 
@@ -74,6 +77,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
         })
     }
 
+    /**
+     * Refreshed the component values according to the [movie] received as a parameter
+     */
     private fun setMovieDetails(movie: Movie) {
         binding.imageViewPoster.load(movie.posterPath)
         binding.textViewTitle.text = movie.title
@@ -91,15 +97,24 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
         binding.addWatchlist.setOnClickListener(showNotImplementedError())
     }
 
+    /**
+     * Show a really simple message to let the user know that this feature is not implemented
+     */
     private fun showNotImplementedError()= View.OnClickListener {
         view?.context?.toast(getString(R.string.not_implemented))
     }
 
+    /**
+     * Show a really basic error message to the user
+     */
     private fun showError(throwable: Throwable) {
         view?.context?.toast(throwable.toString())
         Log.e(MovieDetailFragment::class.java.simpleName, "Error", throwable)
     }
 
+    /**
+     * Centralized method to set the component visibilities.
+     */
     private fun setVisibilities(
         showProgressBar: Boolean = false,
         showDetails: Boolean = false,

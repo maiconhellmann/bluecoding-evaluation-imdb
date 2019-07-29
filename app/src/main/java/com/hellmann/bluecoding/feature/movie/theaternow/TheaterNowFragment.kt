@@ -76,14 +76,25 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
         })
     }
 
+    /**
+     * Setup the recycleView layout manager and set the adapter.
+     */
     private fun setupRecyclerView() = with(binding.recyclerView) {
         layoutManager = GridLayoutManager(context, resources.getInteger(R.integer.movie_grid_columns))
         adapter = theaterNowAdapter
     }
+
+    /**
+     * Show a really basic error message to the user
+     */
     private fun showError(throwable: Throwable) {
         view?.context?.toast(throwable.toString())
         Log.e(TheaterNowFragment::class.java.simpleName, "Error", throwable)
     }
+
+    /**
+     * Centralized method to set the component visibilities.
+     */
     private fun setVisibilities(
         showProgressBar: Boolean = false,
         showList: Boolean = false,

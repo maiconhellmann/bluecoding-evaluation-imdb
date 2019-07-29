@@ -4,6 +4,28 @@ import io.reactivex.Single
 import io.reactivex.SingleSource
 import io.reactivex.SingleTransformer
 
+/**
+ * Sealed class to handle ViewStates.
+ *
+ * When an error happens it will return a [ViewState.Failed] with a [ViewState.Failed.throwable] field
+ *
+ * When it is subscribed it will return a [ViewState.Loading]
+ *
+ * When the call was successfuly made it will return a [ViewState.Success] with a [ViewState.Success.data] field
+ *
+ * Usage:
+    yourUseCase.fetchSomething()
+    .compose(StateMachineSingle())
+    .observeOn(uiScheduler)
+    .subscribeBy(onSuccess = { state ->
+        when (state) {
+            is View.Success -> //set your data using state.data
+            is View.Loading -> //set loading
+            is View.Failed -> //set error using state.throwable
+        }
+    })
+ *
+ */
 sealed class ViewState<out T> {
     object Loading : ViewState<Nothing>()
     data class Success<T>(val data: T) : ViewState<T>()
