@@ -1,5 +1,6 @@
 package com.hellmann.bluecoding.domain.repository
 
+import com.hellmann.bluecoding.domain.entity.Account
 import com.hellmann.bluecoding.domain.entity.Authentication
 import io.reactivex.Single
 
@@ -11,4 +12,5 @@ import io.reactivex.Single
  * (c) 2019 
  */interface AuthenticationRepository {
     fun getGuestSession(): Single<Authentication>
+    fun getAccount(): Single<Account>
 }

@@ -2,6 +2,7 @@ package com.hellmann.bluecoding.data
 
 import com.hellmann.bluecoding.data.local.source.authentication.AuthenticationCacheDataSource
 import com.hellmann.bluecoding.data.remote.source.authentication.AuthenticationRemoteDataSource
+import com.hellmann.bluecoding.domain.entity.Account
 import com.hellmann.bluecoding.domain.entity.Authentication
 import com.hellmann.bluecoding.domain.repository.AuthenticationRepository
 import io.reactivex.Single
@@ -30,5 +31,14 @@ class AuthenticationRepositoryImpl(
                     cacheDataSource.updateGuestUserSession(it)
                 }
             }
+    }
+
+    override fun getAccount(): Single<Account> {
+        return getGuestSession().flatMap {
+            val sessionId = it.guestSessionId ?: throw IllegalArgumentException("Sessions id is null")
+
+            //TODO from cache
+            remoteDataSource.getAccount(sessionId)
+        }
     }
 }

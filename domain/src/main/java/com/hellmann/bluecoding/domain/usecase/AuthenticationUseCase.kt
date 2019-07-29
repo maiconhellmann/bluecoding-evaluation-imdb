@@ -1,5 +1,6 @@
 package com.hellmann.bluecoding.domain.usecase
 
+import com.hellmann.bluecoding.domain.entity.Account
 import com.hellmann.bluecoding.domain.entity.Authentication
 import com.hellmann.bluecoding.domain.repository.AuthenticationRepository
 import io.reactivex.Scheduler
@@ -17,5 +18,8 @@ import io.reactivex.Single
 ) {
     fun getAuthentication(): Single<Authentication> {
         return repository.getGuestSession().subscribeOn(scheduler)
+    }
+    fun getAccount(): Single<Account> {
+        return repository.getAccount().subscribeOn(scheduler)
     }
 }

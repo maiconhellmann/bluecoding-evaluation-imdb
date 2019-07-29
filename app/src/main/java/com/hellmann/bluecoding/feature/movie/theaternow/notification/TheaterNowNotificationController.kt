@@ -95,13 +95,14 @@ class TheaterNowNotificationController(
         /* Set the alarm to start at 08:00 AM */
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = System.currentTimeMillis()
+        calendar.add(Calendar. DATE, 1)//starts tomorrow
         calendar.set(Calendar.HOUR_OF_DAY, 8)
         calendar.set(Calendar.MINUTE, 0)
         calendar.set(Calendar.SECOND, 0)
 
-        /* Repeating on every 20 minutes interval */
+        /* Repeating on every 24 hours interval */
         manager.setRepeating(
-            AlarmManager.RTC_WAKEUP, calendar.timeInMillis, 86400000, getPendingState(context))
+            AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, getPendingState(context))
     }
 
     /**
