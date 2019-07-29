@@ -5,6 +5,7 @@ import com.hellmann.bluecoding.domain.entity.Authentication
 import com.hellmann.bluecoding.domain.repository.AuthenticationRepository
 import io.reactivex.Scheduler
 import io.reactivex.Single
+import java.util.concurrent.TimeUnit
 
 /*
  * This file is part of BlueCodingEvaluationIMDB.
@@ -17,7 +18,7 @@ import io.reactivex.Single
     private val scheduler: Scheduler
 ) {
     fun getAuthentication(): Single<Authentication> {
-        return repository.getGuestSession().subscribeOn(scheduler)
+        return repository.getGuestSession().subscribeOn(scheduler).delay(2, TimeUnit.SECONDS)
     }
     fun getAccount(): Single<Account> {
         return repository.getAccount().subscribeOn(scheduler)

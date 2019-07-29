@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/movie_list_dest">
+    app:startDestination="@id/user_guest_authentication_dest">
 
     <action
         android:id="@+id/action_open_movie_detail"
@@ -12,10 +12,6 @@
     <action
         android:id="@+id/action_open_authentication"
         app:destination="@id/user_guest_authentication_dest" />
-
-    <action
-        android:id="@+id/action_open_movie_list"
-        app:destination="@id/movie_list_dest" />
 
     <fragment
         android:id="@+id/movie_list_dest"
@@ -56,5 +52,7 @@
         android:id="@+id/user_guest_authentication_dest"
         android:name="com.hellmann.bluecoding.feature.authentication.UserGuestAuthenticationFragment"
         android:label=" "
-        tools:layout="@layout/fragment_user_guest_authentication" />
+        tools:layout="@layout/fragment_user_guest_authentication" >
+        <action app:destination="@id/movie_list_dest" app:popUpTo="@id/movie_list_dest" android:id="@+id/action_open_movie_list"/>
+    </fragment>
 </navigation>

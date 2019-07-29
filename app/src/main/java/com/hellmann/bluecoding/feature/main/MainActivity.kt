@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,10 +15,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.hellmann.bluecoding.R
 import com.hellmann.bluecoding.databinding.ActivityMainBinding
 import com.hellmann.bluecoding.feature.authentication.UserGuestAuthenticationFragmentDirections
-import com.hellmann.bluecoding.feature.movie.list.MovieListFragmentDirections
 import com.hellmann.bluecoding.feature.movie.theaternow.notification.TheaterNowNotificationController
 import com.hellmann.bluecoding.feature.viewmodel.ViewState
 import com.hellmann.bluecoding.util.extensions.toast
+import com.hellmann.bluecoding.util.extensions.visible
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity() {
 
         val navController = getNavController() ?: return
 
+        addListeners(navController)
+
         //Setup the navigation library: Drawer, bottonNav, toolbar and navigation
         setupActionBar(navController)
         setupDrawer(navController)
@@ -51,6 +54,19 @@ class MainActivity : AppCompatActivity() {
         controller.startAlarmManager()
 
         setupViewModel()
+
+    }
+
+    private fun addListeners(navController: NavController) {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.user_guest_authentication_dest) {
+                binding.toolbar.visible(false)
+                binding.bottomNavView.visible(false)
+            } else {
+                binding.toolbar.visible(true)
+                binding.bottomNavView.visible(true)
+            }
+        }
     }
 
     private fun setupViewModel() {
@@ -61,15 +77,12 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.state.observe(this, Observer { state->
             when (state) {
-                is ViewState.Loading -> {
-                    getNavController()?.navigate(R.id.user_guest_authentication_dest)
-                }
                 is ViewState.Failed -> {
                     this.toast("Error authenticating a guest user")
                     finish()
                 }
                 is ViewState.Success -> {
-                    getNavController()?.popBackStack()
+                    getNavController()?.navigate(UserGuestAuthenticationFragmentDirections.actionOpenMovieList())
                 }
             }
         })
