@@ -40,6 +40,16 @@ Kotlin
 * Navigation library
 
 ### Tests
+#### app module  
+TODO
+#### data module  
+
+|Class name|Type|Description|
+|---|---|---|
+|MoviePayloadMapperTest.kt|Unit test|Example of a mapper test|
+|RemoteDataSourceTest.kt|Unit test|Example of a remote data source test
+
+#### domain module  
 TODO
 
 ## Improvements noticed and missing requirements
