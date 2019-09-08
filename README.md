@@ -1,20 +1,4 @@
-## Definition
-The app should allow the users to see a list of movies with the basic info. Should be able to
-sort the list, perform search and see the details of every movie. In addition the user will be
-able to mark movies as favorite and see all those favorite movies in separate list. Also the
-user will be able to make a watch list.
 
-The board for the project can be found on the github repository:  
-[Project board](https://github.com/maiconhellmann/bluecoding-evaluation-imdb/projects/1)
-
-#### Api documentation
-API Url=https://api.themoviedb.org  
-API for images=https://image.tmdb.org/t/p  
-API version=3  
-API key=5f18fddd90d0b4d77b1f975ab4a1355b  
-
-More info can be found [HERE](https://developers.themoviedb.org/3/)
- 
 ## Architeture
 MVVM(Model View ViewModel) - using Repository, UseCase and ViewModel  
 Modularization to make gradle build faster
